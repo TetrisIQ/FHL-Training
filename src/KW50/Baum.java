@@ -1,3 +1,4 @@
+package KW50;
 /**
 	*****alex*****
 	Autor: Alexander Werner
