@@ -1,6 +1,5 @@
 package KW51;
 
-import java.io.BufferedReader;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,11 +11,12 @@ public class Aufgabe143 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		boolean stop = true;
-		while (stop) {
-			int input = in.nextInt();
-			if (input != 0) sort(input);
-			else stop = false;
-		}
+		do {
+			System.out.println("Wieviele Zahlen sollen sortiert werden (0 für Programmende)? ");
+			int limit = in.nextInt();
+			System.out.println(sort(limit));
+			if (limit == 0) stop = false;
+		}while (stop);
 		in.close();
 		
 		
@@ -25,64 +25,70 @@ public class Aufgabe143 {
 	public static String sort(int limit) {
 		StringBuilder sb = new StringBuilder();
 		List<Integer> li = new LinkedList<Integer>(generateRandoms(limit));
+
+		//		Start binSort
+		long start2 = System.currentTimeMillis();
+		String binsort = (binSort(li));
+		long end2 = System.currentTimeMillis();
+		sb.append("Laufzeit für binSort bei "+ limit + " Zufallszahlen: ").append((end2 - start2)).append(" Millisekunden")
+		.append("\n").append("\n");
+		
 //		Start Bubblesort
 		long start1 = System.currentTimeMillis();
 		String bubblesort = (bubblesort(li));
-		long end = System.currentTimeMillis();
-		long laufzeit = end - start1; // gemessene
-		
-		
+		long end1 = System.currentTimeMillis();
+		sb.append("Laufzeit für bubbleSort bei "+ limit +" Zufallszahlen: ").append((end1 - start1)).append(" Millisekunden")
+		.append("\n").append("\n");
+//		Ende Bubbelsort
 		
 		return sb.toString();
 	}
 	
 	public static String binSort(List<Integer> s) {
-		return null;
+		Node Tree = treebuilder(s);
+		return inorder(Tree);
 	}
-	public static String bubblesort(List<Integer> s) {
-		return null;
-	}
-	
-	
-	
-	
-	
-	/**
-	 * Generiert zufällige zahlen zwischen 2 Werten
-	 * @param start Der start Wert
-	 * @param end Der end Wert
-	 * @param n Die Anzahl der zufällig generierten Zahlen
-	 * @return Eine Liste mit Zufällig generierten zahlen
-	 */
-	public static List<Integer> generateRandoms( int n) {
-
-		List<Integer> ret = new LinkedList<Integer>();
-		Stream<Integer>	rand = Stream.generate(() -> ((int) Math.random() * n)); 	
-		ret.addAll(rand.limit(n).collect(Collectors.toList()));	
+	public static Node treebuilder(List<Integer> s) {
+		Node ret = new Node(s.get(0),null,null);
+		s.remove(0);
+		for (Integer i : s) {
+			insert(i, ret);
+		}
 		return ret;
 	}
 
-	/**
-	 * Zählt die Kanten!
-	 * @param n Die Baumstruktur in der Gezählt werden soll
-	 * @return Die Anzahl der Kanten
-	 */
-	public static int countEdges(Node n){
-		if (n == null) return 0;
-		return (n.left!=null?1:0) + countEdges(n.left) + (n.right!=null?1:0) +countEdges(n.right);
+	public static String bubblesort(List<Integer> li) {
+		List<Integer> ret = new LinkedList<Integer>(li);
+		int tmp;
+		for (int i = 0; i < ret.size(); i++) {
+			for (int j = i+1; j < ret.size(); j++) {
+				if (ret.get(i) > ret.get(j)) {
+					tmp = ret.get(j);
+					ret.set(j, ret.get(i));
+					ret.set(i, tmp);
+					
+				}
+				
+			}
+			
+		}
+		
+		return ret.toString();
 	}
 	
 	/**
-	 * Zählt die Anzahl der Knoten!
-	 * @param n Die Baumstruktur in der Gezählt werden soll
-	 * @return Die Anzahl der Knoten
+	 * Generiert zufällige zahlen bis 1 Millionen
+	 * @param n Die Anzahl der zufällig generierten Zahlen
+	 * @return Eine Liste mit Zufällig generierten zahlen
 	 */
-	public static int countNode(Node n) {
-		if (n == null) return 0;
-		return countEdges(n)+1;
-	}
-	
+	public static List<Integer> generateRandoms(int n) {
 
+		List<Integer> ret = new LinkedList<Integer>();
+		Stream<Integer>	rand = Stream.generate(() -> (int)(Math.random() * 1000000)); 	
+		ret.addAll(rand.limit(n).collect(Collectors.toList()));	
+		return ret;
+	}
+	
 
 	/**
 	 * Inorder Durchlauf der Baumstruktur
