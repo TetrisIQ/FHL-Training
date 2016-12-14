@@ -1,6 +1,7 @@
 package KW51;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,23 +30,26 @@ public class Aufgabe129 {
 	
 
 	public static List<String> getShortestWords(String s) {
-		String[] work = s.split("+ ");
-		List<String> ret = new LinkedList<String>(Arrays.asList(work));
+		String[] work = s.split(" ");
+		List<String> ret = Arrays.asList(work);
 //		ret = Arrays.asList(work);
-		if (s.length() <= 0) return ret;
-		return ret;
+//		if (s.length() <= 0) return ret;
+		return getShortestWords(ret, 0, 1);
 	}
 	
-	public static List<String> getShortestWords(List<String> ls) {
-		List<String> ret = new LinkedList<String>();
-		if (ls == null || ls.isEmpty()) return ret;
-		if (ls.size() == 1) return ret;
-		
-		if (ls.get(0).length() < ls.get(1).length())
-			ls.remove(1);
-		else
-			ls.remove(0);
-		return getShortestWords(ls);
+	public static List<String> getShortestWords( List<String> ls, int counter, int second) {
+			List<String> ret = new LinkedList<String>(ls);
+			if (ret.isEmpty() || ret.size() == (counter) || ret.size() == 1) return ret;
+				if (ret.get(0).length() > ret.get(second).length()) ret.remove(0);
+				else if (ret.get(0).length() < ret.get(second).length()) ret.remove(second);
+				else if ((ret.get(0).length() == ret.get(second).length())) {
+					second++;
+				}
+//				if(!(ret.get(0).length() == ret.get(1).length())) ret.remove(1);
+
+				counter++;
+			
+			return getShortestWords(ret, counter, second);
 		
 	
 	}
