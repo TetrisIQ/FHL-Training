@@ -12,6 +12,7 @@ public class Aufgabe128 {
 	public static void main(String[] args) {
 		System.out.println(max(generateRandoms(1, 10, 100))); // vermutlich 10
 		System.out.println(max(generateRandoms(1, 10, 0))); // null
+//		System.out.println(max(Arrays.asList(0,1,2,3,4,5,6)));
 	}
 
 	/**
