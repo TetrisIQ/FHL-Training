@@ -1,2 +1,2 @@
 # FHL-Training
-##Die Aufgaben aus dem Aufgabenkathalog 2016/2ß17
+##Die Aufgaben aus dem Aufgabenkathalog 2016/2017
