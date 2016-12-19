@@ -22,7 +22,7 @@ public class Aufgabe129 {
 		// => [so]
 		System.out.println(getShortestWords(""));
 		// => []
-		// System.out.println(getShortestWords("aa b cccc d EEE F FFF c c c"));
+		// System.out.println(getShortestWords(" a bb ss sssss"));
 
 	}
 
@@ -35,8 +35,9 @@ public class Aufgabe129 {
 	 *         getShortestWords(test, ret.size(), 1, 1);
 	 */
 	public static List<String> getShortestWords(String s) {
-		String[] work = s.split("\\s+"); // \\s+ trennt an mehrzeichen incl.
-											// doppelungen
+		String[] work = s.trim().split("\\s+"); // \\s+ trennt an mehrzeichen
+												// incl.
+		// doppelungen
 		List<String> ret = Arrays.asList(work);
 		List<String> words = new ArrayList<String>(ret);
 		return getShortestWords(words, ret.size(), 1, 1);
