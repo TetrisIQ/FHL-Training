@@ -35,7 +35,7 @@ public class Aufgabe129 {
 	 *         getShortestWords(test, ret.size(), 1, 1);
 	 */
 	public static List<String> getShortestWords(String s) {
-		String[] work = s.trim().split("\\s+"); // \\s+ trennt an mehrzeichen
+		String[] work = s.trim().split("\\s+"); //Leerzeichen vor dem string werden abgeschnitten \\s+ trennt an mehrzeichen
 												// incl.
 		// doppelungen
 		List<String> ret = Arrays.asList(work);
