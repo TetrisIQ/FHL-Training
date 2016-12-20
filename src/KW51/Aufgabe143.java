@@ -18,14 +18,13 @@ public class Aufgabe143 {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		boolean stop = true;
-		do {
+		while (true) {
 			System.out.println("Wieviele Zahlen sollen sortiert werden (0 für Programmende)? ");
 			int limit = in.nextInt();
+			if (limit == 0) break;
 			System.out.println(sort(limit));
-			if (limit == 0)
-				stop = false;
-		} while (stop);
+		}
+
 		in.close();
 
 	}
