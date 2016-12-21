@@ -13,12 +13,26 @@ public class ZweiDArray {
 
 	public static void main(String[] args) {
 		// TODO Automatisch generierter Methodenstub
-
+		int[][] test = {{1,2,3,4,5},
+				{6,7,8,9,10,},
+				{11,12,13,14,15}};
+		System.out.println(zeilenweise(test));
 		
 	}
 	
 	public static String zeilenweise(int[][] xs) {
+		
+		
 		return null;
+	}
+	
+	public static String row(int[][] xs) {
+		StringBuilder sb = new StringBuilder();
+		if (xs[0].length == 0) return sb.toString();
+		sb.append(xs[0]); 
+		xs.
+		return row(xs) + sb.toString();
+		
 	}
 
 }

@@ -15,15 +15,20 @@ import java.util.Arrays;
 public class Aufgabe129 {
 
 	public static void main(String[] args) {
-		List<String> words = getShortestWords("Dies ist nur ein dummes Beispiel");
-		System.out.println(words);
+//		List<String> words = getShortestWords("Dies ist nur ein dummes Beispiel");
+//		System.out.println(words);
 		// => [ist, nur, ein]
-		System.out.println(getShortestWords("Dies ist so ein dummes Beispiel"));
+//		System.out.println(getShortestWords("Dies ist so ein dummes Beispiel"));
 		// => [so]
 		System.out.println(getShortestWords(""));
 		// => []
 		// System.out.println(getShortestWords(" a bb ss sssss"));
 
+	      System.out.println(getShortestWords("a"));
+	      System.out.println(getShortestWords("   Hallo   "));
+	      System.out.println(getShortestWords("Dies ist nur so ein doofes Beispiel"));
+	      System.out.println(getShortestWords("So ein doofes Beispiel"));
+	      
 	}
 
 	/**
@@ -35,9 +40,7 @@ public class Aufgabe129 {
 	 *         getShortestWords(test, ret.size(), 1, 1);
 	 */
 	public static List<String> getShortestWords(String s) {
-		String[] work = s.trim().split("\\s+"); //Leerzeichen vor dem string werden abgeschnitten \\s+ trennt an mehrzeichen
-												// incl.
-		// doppelungen
+		String[] work = s.trim().split("\\s+"); //Leerzeichen vor dem string werden abgeschnitten \\s+ trennt an mehrzeichen incl. doppelungen
 		List<String> ret = Arrays.asList(work);
 		List<String> words = new ArrayList<String>(ret);
 		return getShortestWords(words, ret.size(), 1, 1);
