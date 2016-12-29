@@ -16,8 +16,9 @@ public class Lamdas {
     public static void main(String[] args) {
         // TODO Automatisch generierter Methodenstub
 
-        BiFunction<String, Integer, String> link = (s,i) -> ;
-        System.out.println(link.apply("Hallo", 3));
+//        BiFunction<String, Integer, String> link = (s,i) -> i*i.toString();
+//        System.out.println(link.apply("Hallo", 3));
+        System.out.println("Test2");
     }
 
 }
