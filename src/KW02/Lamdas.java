@@ -10,15 +10,18 @@
 package KW02;
 
 import java.util.function.BiFunction;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Lamdas {
 
     public static void main(String[] args) {
         // TODO Automatisch generierter Methodenstub
 
-//        BiFunction<String, Integer, String> link = (s,i) -> i*i.toString();
-//        System.out.println(link.apply("Hallo", 3));
-        System.out.println("Test2");
+        BiFunction<Integer, String, String> link = (i,s) -> i <=0 ?"": Stream.generate(() -> s).limit(i).collect(Collectors.joining());
+        System.out.println(link.apply(3, "Hallo"));
+        
+        
     }
 
 }
