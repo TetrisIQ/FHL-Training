@@ -17,12 +17,17 @@ import java.util.stream.Collectors;
 public class Html {
     public static void main(String[] args) {
 
-        List<String> strings = Arrays.asList("Dies", "ist", "ein", "Beispiel");
+        List<String> strings = Arrays.asList();
         System.out.println(toHtmlList(strings));
         System.out.println(" ");
 
     }
 
+    /**
+     * Wandelt eine Liste mittels Lamdas und Streams in eine HTML liste
+     * @param ls Die Liste die Umgewandelt werden soll
+     * @return ein string von der Form einer HTML Liste
+     */
     public static String toHtmlList(List<String> ls) {
         Function<String, String> li = s -> "<li>" + s + "</li>";
         return "<ul>\n" + ls.stream().map(li).collect(Collectors.joining("\n")) + "\n</ul>";
