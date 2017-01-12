@@ -22,7 +22,7 @@ public class count {
 	public static void main(String[] args) {
 		 URL url;
 		try {
-			url = new URL("http://www.nkode.io/assets/programming/onlyone.txt");
+			url = new URL("http://www.nkode.io/assets/programming/countmychars.txt");
 		 Map<Character, Integer> countedChars = countChars(url);
 		 for (char c : countedChars.keySet()) {
 		 System.out.println("- " + c + ": " + countedChars.get(c));

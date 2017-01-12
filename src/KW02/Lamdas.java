@@ -17,7 +17,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Lamdas {
-
+    
+    /**
+     * 
+     * 
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         // TODO Automatisch generierter Methodenstub
 
@@ -25,13 +31,13 @@ public class Lamdas {
         System.out.println(link.apply(3, "Hallo"));
         
         Function<String, Integer> count = s -> s == null ? 0 : s.length();
-        System.out.println(count.apply(""));
+        System.out.println(count.apply("1234567"));
 //        System.out.println(count.apply("Hallo"));
 //        System.out.println(count.apply(null));
 //        System.out.println(count.apply("World"));
         
         Predicate<String> even = s -> s == null ? false : (s.length() % 2 == 0 ? true : false);
-        System.out.println(even.test(null));
+        System.out.println(even.test("TeST"));
         
 //      Predicate<String> uneven = s -> s == null ? false : (s.length() % 2 == 0 ? false : true);
         Predicate<String> uneven = s -> s == null ? false : !even.test(s);
@@ -44,7 +50,7 @@ public class Lamdas {
         
 //        BiFunction<String, String, Integer> shortest = (s,a) -> s.length() == a.length() ? 0 : (s.length() > a.length() ? 2 : 1);
         BinaryOperator<String> shortest = (s,a) -> s.length() == a.length() ? "Gleichlang" : (s.length() > a.length() ? a : s);
-        System.out.println(shortest.apply("h", "hi"));
+        System.out.println(shortest.apply("h", "h"));
         
     }
 

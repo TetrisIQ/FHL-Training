@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class Html {
     public static void main(String[] args) {
 
-        List<String> strings = Arrays.asList();
+        List<String> strings = Arrays.asList("Dies", "ist", "ein", "Beispiel");
         System.out.println(toHtmlList(strings));
         System.out.println(" ");
 
