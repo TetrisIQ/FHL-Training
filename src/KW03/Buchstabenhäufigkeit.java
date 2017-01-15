@@ -3,7 +3,6 @@ package KW03;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -17,9 +16,10 @@ import java.net.URL;
 public class Buchstabenhäufigkeit {
 
     public static void main(String[] args) {
-//        System.out.println(charStat("http://www.nkode.io/assets/programming/countmychars.txt"));
+        // System.out.println(charStat("http://www.nkode.io/assets/programming/countmychars.txt"));
         try {
             System.out.println(getTxt("http://www.nkode.io/assets/programming/countmychars.txt"));
+
         } catch (IOException e) {
             // TODO Automatisch generierter Erfassungsblock
             e.printStackTrace();
@@ -27,42 +27,18 @@ public class Buchstabenhäufigkeit {
 
     }
 
-    public static String getTxt(BufferedReader in, URL url, String result) throws IOException {
-        String line = in.readLine();
-        String Last = (line != null) ? ((result += line) + "\n") + getTxt(in, url, result): "" ;
-        return Last;
+    public static String getTxt(BufferedReader in, String result) throws IOException {
+        String inputLine = "";
+        inputLine = in.readLine();
+        return (inputLine != null) ? result += (inputLine + "\n") + getTxt(in, result) : "";
     }
 
     public static String getTxt(String string) throws IOException {
-        URL  url = new URL(string);
+        URL url = new URL(string);
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-        return getTxt(in, url, "");
-    }
-
-    public static String charStat(URL url) {
-        oftenChar(url);
-        rareChar(url);
-        return "";
-    }
-
-    public static String oftenChar(URL url) {
-
-        return "";
-    }
-
-    public static String rareChar(URL url) {
-
-        return "";
-    }
-
-    public static String decliningChar(URL url) {
-
-        return "";
-    }
-
-    public static String oftenUse(URL url) {
-
-        return "";
+        String ret = getTxt(in, "");
+        in.close();
+        return ret;
     }
 
 }
