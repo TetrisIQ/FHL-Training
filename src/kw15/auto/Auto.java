@@ -15,6 +15,7 @@ public class Auto {
 		this.laufleistung = l;
 		this.preis = p;
 		this.farbe = f;
+		this.unfallwagen = u;
 		this.kraftstoff = k;
 		this.leistung = ps;
 		
@@ -30,6 +31,18 @@ public class Auto {
 		  .append("Farbe: ").append(this.farbe).append("\n").append(unfallwagen ? "unfallwagen" : "unfallfrei").append("\n")
 		  .append("---");
 		return sb.toString();
+	}
+	
+	public double getPreis() {
+		return this.preis;
+	}
+	
+	public boolean getUnfallwagen() {
+		return this.unfallwagen;
+	}
+	
+	public String getKraftstoff() {
+		return this.kraftstoff;
 	}
 
 }
