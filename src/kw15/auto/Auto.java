@@ -28,8 +28,7 @@ public class Auto {
 		  .append("Preis: ").append(this.preis).append("\n")
 		  .append("Motor: ").append(this.leistung).append(" (").append(this.kraftstoff).append(") \n")
 		  .append("KM-Stand: ").append(this.laufleistung).append("\n")
-		  .append("Farbe: ").append(this.farbe).append("\n").append(unfallwagen ? "unfallwagen" : "unfallfrei").append("\n")
-		  .append("---");
+		  .append("Farbe: ").append(this.farbe).append("\n").append(unfallwagen ? "---" : "unfallfrei \n---");
 		return sb.toString();
 	}
 	

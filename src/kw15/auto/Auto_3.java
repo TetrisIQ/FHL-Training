@@ -15,7 +15,7 @@ public class Auto_3 {
 				new Auto("Mercedes", 63000, 22999.99, "bluesilver", true, "Elektro", 37.0),
 				new Auto("Daihatsu", 12000, 3099.99, "greendynamite", true, "Benzin", 75.0) };
 
-		System.out.println(autobestand[0].getKraftstoff().trim().equalsIgnoreCase("diesel"));
+//		System.out.println(autobestand[0].getKraftstoff().trim().equalsIgnoreCase("diesel"));
 		System.out.println("Erlös ohne Nachlässe: " + erlose(autobestand) + " EUR");
 		System.out.println("Anteil an Unfallwagen: " + unfallwagen(autobestand) + " %");
 		System.out.println("Anteil an Dieselwagen: " + dieselwagen(autobestand) + " %");
