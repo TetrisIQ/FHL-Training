@@ -1,5 +1,13 @@
 package kw15.auto;
 
+/**
+ * <b>*****TetrisIQ***** </b> <br>
+ * Autor: Alexander Werner <br>
+ * Projekt: FHL-Training <br>
+ * Classe: Auto_main.java <br>
+ * Datum: 05.04.2017 <br>
+ * Package: kw15.auto <br>
+ */
 public class Auto_main {
 	public static void main(String[] args) {
 		Auto a1 = new Auto("Ford", 125000, 7999.99, "silber metallic", false, "Diesel", 101.0);
