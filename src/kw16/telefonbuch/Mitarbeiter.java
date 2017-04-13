@@ -9,6 +9,12 @@ package kw16.telefonbuch;
  * Package: kw16.telefonbuch <br>
  */
 public interface Mitarbeiter {
+
+	
+	public String getName();
+	public Raum getRaum();
+	public void setRaum(Raum raum);
+	public String toString();	
 	
 
 }

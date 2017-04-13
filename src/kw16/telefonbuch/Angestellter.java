@@ -1,28 +1,26 @@
 package kw16.telefonbuch;
 
-import kw16.uml.Mitarbeiter;
-
 /**
  * <b>*****TetrisIQ***** </b> <br>
  * Autor: Alexander Werner <br>
  * Projekt: FHL-Training <br>
- * Classe: Student.java <br>
- * Datum: 10.04.2017 <br>
+ * Classe: Angestellter.java <br>
+ * Datum: 13.04.2017 <br>
  * Package: kw16.telefonbuch <br>
  */
-public class Student implements kw16.telefonbuch.Mitarbeiter {
+public class Angestellter implements Mitarbeiter {
 	private String name;
 	private String mail;
-	private int matrNr;
+	private String titel;
 
-	public Student(String n, String m, int matrNr) {
+	public Angestellter(String t, String n, String m) {
 		this.name = n;
 		this.mail = m;
-		this.matrNr = matrNr;
+		this.titel = t;
 	}
 
 	public String toString() {
-		return this.name + " (" + this.mail + ")";
+		return this.titel + " " + this.name + " (" + this.mail + ")";
 	}
 
 	@Override
@@ -40,7 +38,7 @@ public class Student implements kw16.telefonbuch.Mitarbeiter {
 	@Override
 	public void setRaum(Raum raum) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
