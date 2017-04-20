@@ -3,7 +3,6 @@ package kw16.telefonbuch;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.org.apache.xml.internal.serializer.SerializerTrace;
 
 /**
  * <b>*****TetrisIQ***** </b> <br>
@@ -18,6 +17,8 @@ public class Raum {
 	private int etage;
 	private int raum;
 	private List<Mitarbeiter> m = new LinkedList<Mitarbeiter>();
+	private List<Telefonanschluss> anschluesse = new LinkedList<Telefonanschluss>();
+	
 
 	public Raum(int g, int e, int r) {
 		this.geb = g;
@@ -30,23 +31,23 @@ public class Raum {
 	}
 
 	public boolean weiseZu(Mitarbeiter m) {
+		if (this.m.contains(m)) return false;
 		m.setRaum(this);
-		return true; //????????????????????????????????
+		return this.m.add(m); 
 	}
 
 	public boolean weiseZu(Telefonanschluss tel) {
+		if (this.anschluesse.contains(tel)) return false;
 		tel.setRaum(this);
-		return true; //??????????????????????????????????
+		return this.anschluesse.add(tel); 
 	}
 
 	public List<Mitarbeiter> getMitarbeiter() {
-		List<Mitarbeiter> ret = new LinkedList<Mitarbeiter>();
-		return ret;
+		return this.m;
 	}
 
 	public List<Telefonanschluss> getAnschluesse() {
-		List<Telefonanschluss> tel = new LinkedList<Telefonanschluss>();
-		return tel;
+		return this.anschluesse;
 	}
 
 }

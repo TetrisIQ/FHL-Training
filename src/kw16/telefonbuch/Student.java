@@ -1,6 +1,5 @@
 package kw16.telefonbuch;
 
-import kw16.uml.Mitarbeiter;
 
 /**
  * <b>*****TetrisIQ***** </b> <br>
@@ -11,36 +10,58 @@ import kw16.uml.Mitarbeiter;
  * Package: kw16.telefonbuch <br>
  */
 public class Student implements kw16.telefonbuch.Mitarbeiter {
+	private Raum raum;
 	private String name;
 	private String mail;
+	@SuppressWarnings("unused")
 	private int matrNr;
 
+	/**
+	 * Konstruktor für Studenten 
+	 * @param n Name 
+	 * @param m MailAdresse
+	 * @param matrNr MatrikelNr.
+	 */
 	public Student(String n, String m, int matrNr) {
 		this.name = n;
 		this.mail = m;
 		this.matrNr = matrNr;
 	}
 
+	/**
+	 * toString Methode zur ausgabe von Studenten
+	 */
 	public String toString() {
 		return this.name + " (" + this.mail + ")";
 	}
 
+
 	@Override
+	/**
+	 * Getter Methode für Studenten
+	 */
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
+
 	@Override
+	/**
+	 * Getter Methode für Studenten
+	 */
 	public Raum getRaum() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.raum;
 	}
 
+	
 	@Override
+	/**
+	 * Setter Methode für Studenten 
+	 * @param raum Raum
+	 */
 	public void setRaum(Raum raum) {
-		// TODO Auto-generated method stub
-		
+		this.raum = raum;
 	}
+
 
 }

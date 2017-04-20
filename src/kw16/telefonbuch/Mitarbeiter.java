@@ -8,13 +8,17 @@ package kw16.telefonbuch;
  * Datum: 10.04.2017 <br>
  * Package: kw16.telefonbuch <br>
  */
-public interface Mitarbeiter {
-
+public interface Mitarbeiter  {
 	
 	public String getName();
-	public Raum getRaum();
-	public void setRaum(Raum raum);
-	public String toString();	
-	
 
-}
+	public Raum getRaum();
+
+	public void setRaum(Raum raum);
+
+	public String toString();
+
+
+	}
+
+
