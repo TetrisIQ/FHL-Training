@@ -16,8 +16,8 @@ public class Chess_Main {
 
 	public static void main(String[] args) throws Exception {
 		Position a = new Position('C', 3);
-		Position b = new Position('C', 4);
-		System.out.println(a.equals(b));
+		Position b = new Position('D', 10);
+		System.out.println(b.isValid());
 
 
 	}

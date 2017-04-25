@@ -12,16 +12,19 @@ public class Position {
 	private int rank; // spalte a,b,c ...
 	private int file; // Zeile
 
-	public Position(char x, int y) {
+	public Position(char x, int y) throws Exception {
 		this.rank = charToInt(x);
 		this.file = y;
+		if (!isValid()) {
+			throw new Exception("Die Position ist nicht gültig!");
+		}
 	}
 
-	// private Position(int x, int y) throws Exception {
-	// this.file = x;
-	// this.rank = y;
-	//
-	// }
+	private Position(int x, int y) throws Exception {
+		this.file = x;
+		this.rank = y;
+
+	}
 
 	private int charToInt(char x) {
 		char[] pos = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
@@ -52,29 +55,35 @@ public class Position {
 	public String toString() {
 		return (intToChar(this.rank)) + "" + this.file + ":";
 	}
-	
+
 	public boolean isValid() {
-		//to be done
-		return false;
+		if (this.rank <= 8 && this.rank >= 1 && this.file <= 8 && this.file >= 1) { return true; }
+			return false;
 	}
-	
+
 	public char getRank() {
 		return intToChar(this.rank);
-		
+
 	}
+
 	public int getFile() {
 		return this.file;
 	}
-	
+
 	public Position relative(int x, int y) {
-		//to be done
-		return null;
-		
+
+		try {
+			return new Position(this.rank + rank, this.file + file);
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
-	
+
 	public boolean equals(Position pos) {
-		if (this.file == pos.file && this.rank == pos.rank) return true;
-		return false;	
+		if (this.file == pos.file && this.rank == pos.rank)
+			return true;
+		return false;
 	}
 
 }

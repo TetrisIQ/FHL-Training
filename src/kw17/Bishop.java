@@ -19,7 +19,6 @@ public class Bishop extends Chessman {	//Läufer
 	@Override
 	public List<Position> reachablePositions() {
 		
-		// TODO Auto-generated method stub
 		return null;
 	}
 
