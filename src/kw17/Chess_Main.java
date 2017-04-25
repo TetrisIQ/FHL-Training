@@ -25,18 +25,18 @@ import org.junit.Test;
 public class Chess_Main {
 
 	public static void main(String[] args) throws Exception {
-		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
-				new Position('D', 8), new Position('G', 5));
-		for (int i = 0; i < moves.size(); i++) {
-
-			 List<Position> submoves = moves.subList(0, i + 1);
-			 String mans = possibleChessmans(submoves).stream().map(cm ->
-			 cm.pieceName())
-			 .collect(Collectors.joining(", "));
-			 System.out.println(moves.get(i) + ": " + mans);
-		}
+//		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
+//				new Position('D', 8), new Position('G', 5));
+//		for (int i = 0; i < moves.size(); i++) {
+//
+//			 List<Position> submoves = moves.subList(0, i + 1);
+//			 String mans = possibleChessmans(submoves).stream().map(cm ->
+//			 cm.pieceName())
+//			 .collect(Collectors.joining(", "));
+//			 System.out.println(moves.get(i) + ": " + mans);
+//		}
 		
-		Chessman a = new Pawn('B', 2, true);
+		Chessman a = new Bishop('B', 2);
 		System.out.println(a.reachablePositions());
 
 		

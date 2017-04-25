@@ -18,7 +18,9 @@ public class Knight extends Chessman{
 
 	@Override
 	public List<Position> reachablePositions() {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return null;
 	}
 

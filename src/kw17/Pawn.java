@@ -27,35 +27,26 @@ public class Pawn extends Chessman {
 		return !(this.white);
 	}
 
-	public List<Position> reachablePositions() throws Exception { // position or
-																	// PositionS!
-																	// ? im
-		// er mit S
+	public List<Position> reachablePositions() throws Exception { 
 		List<Position> result = new LinkedList<>();
 		Position curentposition = currentPosition();
 		int yfile = curentposition.getFile();
-		
-		if(yfile == 2 && isWhite()) {
-			result.add(new Position(curentposition.getRank(), (yfile +2)));
+
+		if (yfile == 2 && isWhite()) {
+			result.add(new Position(curentposition.getRank(), (yfile + 2)));
 		}
-		
-		if(yfile == 7 && isBlack()) {
-			result.add(new Position(curentposition.getRank(), (yfile -2)));
+
+		if (yfile == 7 && isBlack()) {
+			result.add(new Position(curentposition.getRank(), (yfile - 2)));
 		}
-		
+
 		if (isWhite()) {
 			result.add(new Position(curentposition.getRank(), (yfile + 1)));
 		}
-		
+
 		if (isBlack()) {
 			result.add(new Position(curentposition.getRank(), (yfile - 1)));
 		}
-		
-		
-		
-		
-		
-		
 		return result;
 	}
 

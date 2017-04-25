@@ -20,7 +20,7 @@ public class Rook extends Chessman {
 	@Override
 	public List<Position> reachablePositions() throws Exception {
 		List<Position> result = new LinkedList<>();
-		Position pos = this.currentPosition();
+		Position pos = currentPosition();
 		//alle wege auf der Y achse
 		result.add(new Position(pos.getRank(), 1));
 		result.add(new Position(pos.getRank(), 2));
