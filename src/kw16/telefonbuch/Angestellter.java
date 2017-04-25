@@ -59,5 +59,10 @@ public class Angestellter implements Mitarbeiter {
 
 	}
 
+	@Override
+	public int compareTo(Mitarbeiter o) {
+		return this.name.compareToIgnoreCase(o.getName());
+	}
+
 
 }

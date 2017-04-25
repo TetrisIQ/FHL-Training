@@ -8,8 +8,8 @@ package kw16.telefonbuch;
  * Datum: 10.04.2017 <br>
  * Package: kw16.telefonbuch <br>
  */
-public interface Mitarbeiter  {
-	
+public interface Mitarbeiter extends Comparable<Mitarbeiter> {
+
 	public String getName();
 
 	public Raum getRaum();
@@ -18,7 +18,4 @@ public interface Mitarbeiter  {
 
 	public String toString();
 
-
-	}
-
-
+}

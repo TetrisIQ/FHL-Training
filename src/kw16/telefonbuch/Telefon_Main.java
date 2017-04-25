@@ -51,12 +51,18 @@ public class Telefon_Main {
 	 * Die Liste wird Alphabetisch Sortiert ausgeben <br>
 	 * Die Ursprungsliste wird NICHT verändert
 	 * 
-	 * @param mas Eine Liste mit Mitarbeitern 
+	 * @param mas
+	 *            Eine Liste mit Mitarbeitern
 	 * @return Auflistung von Mitarbeitern und ihrer Telefonanschlüsse
+
 	 */
 	private static String telefonbuch(List<Mitarbeiter> mas) {
 		List<Mitarbeiter> li = new LinkedList<Mitarbeiter>(mas);
-		li.sort((m1, m2) -> m1.getName().compareToIgnoreCase(m2.getName()));
+		try {
+			li.sort((m1, m2) -> m1.getName().compareToIgnoreCase(m2.getName()));
+		} catch (Exception e) {
+		}
+
 		StringBuilder sb = new StringBuilder();
 		for (Mitarbeiter m : li) {
 			sb.append(m.toString()).append("\n");
@@ -67,6 +73,10 @@ public class Telefon_Main {
 		}
 
 		return sb.toString();
+	}
+	
+	private static String telefonbuchNeu() {
+		return "";
 	}
 
 }

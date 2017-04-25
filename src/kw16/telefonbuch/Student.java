@@ -63,5 +63,10 @@ public class Student implements kw16.telefonbuch.Mitarbeiter {
 		this.raum = raum;
 	}
 
+	@Override
+	public int compareTo(Mitarbeiter o) {
+		return this.name.compareToIgnoreCase(o.getName());
+	}
+
 
 }
