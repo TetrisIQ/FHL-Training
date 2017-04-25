@@ -14,7 +14,6 @@ public class Knight extends Chessman{
 
 	public Knight(char c, int i) throws Exception {
 		super(c, i);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

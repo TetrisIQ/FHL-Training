@@ -26,18 +26,22 @@ public abstract class Chessman {
 			return false;
 		}
 		this.p = p;
-		return false;
+		return true;
 	}
 
 	public boolean isReachable(Position p) {
-		return reachablePositions().contains(p);
+		try {
+			return reachablePositions().contains(p);
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public String toString() {
 		return pieceName();
 	}
 
-	public abstract List<Position> reachablePositions();
+	public abstract List<Position> reachablePositions() throws Exception;
 
 	public abstract String pieceName();
 

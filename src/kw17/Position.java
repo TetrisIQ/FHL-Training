@@ -53,7 +53,7 @@ public class Position {
 	}
 
 	public String toString() {
-		return (intToChar(this.rank)) + "" + this.file + ":";
+		return (intToChar(this.rank)) + "" + this.file + "";
 	}
 
 	public boolean isValid() {
@@ -64,6 +64,10 @@ public class Position {
 	public char getRank() {
 		return intToChar(this.rank);
 
+	}
+	
+	public int getRankInt() {
+		return this.rank;
 	}
 
 	public int getFile() {

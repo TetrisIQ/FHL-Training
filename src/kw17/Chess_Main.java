@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 /**
@@ -18,24 +20,58 @@ import java.util.stream.Collectors;
 public class Chess_Main {
 
 	public static void main(String[] args) throws Exception {
-		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
-				new Position('D', 8), new Position('G', 5));
-		for (int i = 0; i < moves.size(); i++) {
-			List<Position> submoves = moves.subList(0, i + 1);
+//		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
+//				new Position('D', 8), new Position('G', 5));
+//		for (int i = 0; i < moves.size(); i++) {
+//			List<Position> submoves = moves.subList(0, i + 1);
 //			String mans = possibleChessmans(submoves).stream().map(cm -> cm.pieceName())
 //					.collect(Collectors.joining(", "));
 //			System.out.println(moves.get(i) + ": " + mans);
-		}
+//		}
+		
+		
+		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('C', 3));
 
+		for (int i = 0; i < moves.size(); i++) {
+			List<Position> submoves = moves.subList(0, i + 1);
+			String mans = possibleChessmans(submoves).stream().map(cm -> cm.pieceName())
+					.collect(Collectors.joining(", "));
+			System.out.println(moves.get(i) + ": " + mans);
+		}
+			
+		System.out.println(new Position('B', 2) == null);
+		
+		
+		
 	}
 
-	private static Collection<Position> possibleChessmans(List<Position> submoves) {
+	private static List<Chessman> possibleChessmans(List<Position> submoves) throws Exception {
 		if (submoves == null || submoves.isEmpty()) {
 			return Collections.emptyList();
 		}
-		//to be done 
-		return Collections.emptyList();
 
+		List<Chessman> chessmen = null;
+		for (int i = 0; i < submoves.size(); i++) {
+			Position position = submoves.get(i);
+			if (i == 0) {
+				chessmen = createAllChessman(position);
+				continue;
+			}
+			for (Chessman chessman : chessmen) {
+				if (!chessman.moveTo(position)) {
+					chessmen.remove(chessman);
+				}
+			}
+		}
+		return chessmen;
+	}
+
+	private static List<Chessman> createAllChessman(Position position) throws Exception {
+		int file = position.getFile();
+		char rank = position.getRank();
+		return new CopyOnWriteArrayList<>(
+				Arrays.asList(new Pawn(rank, file, true), new Pawn(rank, file, false), new King(rank, file),
+						new Bishop(rank, file), new Queen(rank, file), new Knight(rank, file), new Rook(rank, file)));
 	}
 
 }

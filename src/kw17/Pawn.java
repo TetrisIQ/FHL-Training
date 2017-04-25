@@ -1,5 +1,6 @@
 package kw17;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,10 +11,11 @@ import java.util.List;
  * Datum: 20.04.2017 <br>
  * Package: kw17 <br>
  */
-public class Pawn {
+public class Pawn extends Chessman {
 	private boolean white;
 
-	public Pawn(char c, int i, Boolean white) {
+	public Pawn(char c, int i, Boolean white) throws Exception {
+		super(c, i);
 		this.white = white;
 	}
 
@@ -25,12 +27,37 @@ public class Pawn {
 		return !(this.white);
 	}
 
-	public List<Position> reachablePositions() { // position or PositionS! ? im
-													// er mit S
-		return null; // to be done
+	public List<Position> reachablePositions() throws Exception { // position or
+																	// PositionS!
+																	// ? im
+		// er mit S
+		List<Position> result = new LinkedList<>();
+		Position pos = this.currentPositions();
+		if (this.isWhite()) {
+			if (pos.getFile() == 2) {
+				result.add(new Position(pos.getRank(), (pos.getFile() + 1)));
+				result.add(new Position(pos.getRank(), (pos.getFile() + 2)));
+			}
+			if (pos.getFile() > 2) {
+				result.add(new Position(pos.getRank(), (pos.getFile() + 1)));
+
+			}
+			
+		if (this.isBlack()) {
+			if (pos.getFile() == 7) {
+				result.add(new Position(pos.getRank(), (pos.getFile() - 1)));
+				result.add(new Position(pos.getRank(), (pos.getFile() - 2)));
+			}
+			if (pos.getFile() < 7) {
+				result.add(new Position(pos.getRank(), (pos.getFile() - 1)));
+			}
+		}
+		}
+
+		return result;
 	}
 
 	public String pieceName() {
-		return white ? "Weißer" : "Schwarzer" + "Bauer";
+		return white ? "Weißer Bauer" : "Schwarzer Bauer";
 	}
 }
