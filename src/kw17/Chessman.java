@@ -17,8 +17,8 @@ public abstract class Chessman {
 		this.p = new Position(c, i);
 	}
 
-	public Position currentPositions() {
-		return this.p;
+	public Position currentPosition() {
+		return p;
 	}
 
 	public boolean moveTo(Position p) {

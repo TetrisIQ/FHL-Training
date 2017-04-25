@@ -1,13 +1,18 @@
 package kw17;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+
+import org.junit.Test;
 
 /**
  * <b>*****TetrisIQ***** </b> <br>
@@ -20,29 +25,22 @@ import java.util.stream.Collectors;
 public class Chess_Main {
 
 	public static void main(String[] args) throws Exception {
-//		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
-//				new Position('D', 8), new Position('G', 5));
-//		for (int i = 0; i < moves.size(); i++) {
-//			List<Position> submoves = moves.subList(0, i + 1);
-//			String mans = possibleChessmans(submoves).stream().map(cm -> cm.pieceName())
-//					.collect(Collectors.joining(", "));
-//			System.out.println(moves.get(i) + ": " + mans);
-//		}
-		
-		
-		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('C', 3));
-
+		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
+				new Position('D', 8), new Position('G', 5));
 		for (int i = 0; i < moves.size(); i++) {
-			List<Position> submoves = moves.subList(0, i + 1);
-			String mans = possibleChessmans(submoves).stream().map(cm -> cm.pieceName())
-					.collect(Collectors.joining(", "));
-			System.out.println(moves.get(i) + ": " + mans);
+
+			 List<Position> submoves = moves.subList(0, i + 1);
+			 String mans = possibleChessmans(submoves).stream().map(cm ->
+			 cm.pieceName())
+			 .collect(Collectors.joining(", "));
+			 System.out.println(moves.get(i) + ": " + mans);
 		}
-			
-		System.out.println(new Position('B', 2) == null);
 		
+		Chessman a = new Pawn('B', 2, true);
+		System.out.println(a.reachablePositions());
+
 		
-		
+
 	}
 
 	private static List<Chessman> possibleChessmans(List<Position> submoves) throws Exception {

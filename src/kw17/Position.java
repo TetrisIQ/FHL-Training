@@ -21,8 +21,8 @@ public class Position {
 	}
 
 	private Position(int x, int y) throws Exception {
-		this.file = x;
-		this.rank = y;
+		this.rank = x;
+		this.file = y;
 
 	}
 
@@ -77,7 +77,7 @@ public class Position {
 	public Position relative(int x, int y) {
 
 		try {
-			return new Position(this.rank + rank, this.file + file);
+			return new Position(this.rank + x, this.file + y);
 		} catch (Exception e) {
 			return null;
 		}

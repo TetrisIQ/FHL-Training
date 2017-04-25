@@ -21,7 +21,7 @@ public class King extends Chessman {
 	@Override
 	public List<Position> reachablePositions() throws Exception {
 		List<Position> result = new LinkedList<>();
-		Position pos = this.currentPositions();
+		Position pos = currentPosition();
 
 		// ein nach rechts
 		Position position = pos.relative(1, 0);

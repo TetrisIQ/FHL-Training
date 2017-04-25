@@ -32,28 +32,30 @@ public class Pawn extends Chessman {
 																	// ? im
 		// er mit S
 		List<Position> result = new LinkedList<>();
-		Position pos = this.currentPositions();
-		if (this.isWhite()) {
-			if (pos.getFile() == 2) {
-				result.add(new Position(pos.getRank(), (pos.getFile() + 1)));
-				result.add(new Position(pos.getRank(), (pos.getFile() + 2)));
-			}
-			if (pos.getFile() > 2) {
-				result.add(new Position(pos.getRank(), (pos.getFile() + 1)));
-
-			}
-			
-		if (this.isBlack()) {
-			if (pos.getFile() == 7) {
-				result.add(new Position(pos.getRank(), (pos.getFile() - 1)));
-				result.add(new Position(pos.getRank(), (pos.getFile() - 2)));
-			}
-			if (pos.getFile() < 7) {
-				result.add(new Position(pos.getRank(), (pos.getFile() - 1)));
-			}
+		Position curentposition = currentPosition();
+		int yfile = curentposition.getFile();
+		
+		if(yfile == 2 && isWhite()) {
+			result.add(new Position(curentposition.getRank(), (yfile +2)));
 		}
+		
+		if(yfile == 7 && isBlack()) {
+			result.add(new Position(curentposition.getRank(), (yfile -2)));
 		}
-
+		
+		if (isWhite()) {
+			result.add(new Position(curentposition.getRank(), (yfile + 1)));
+		}
+		
+		if (isBlack()) {
+			result.add(new Position(curentposition.getRank(), (yfile - 1)));
+		}
+		
+		
+		
+		
+		
+		
 		return result;
 	}
 
