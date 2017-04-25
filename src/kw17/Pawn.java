@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Pawn {
 	private boolean white;
-	
+
 	public Pawn(char c, int i, Boolean white) {
 		this.white = white;
 	}
@@ -20,16 +20,17 @@ public class Pawn {
 	public boolean isWhite() {
 		return this.white;
 	}
-	
+
 	public boolean isBlack() {
 		return !(this.white);
 	}
-	
-	public List<Position> reachablePositions() {	//position or PositionS! ? im er mit S
-		return null; //to be done 
+
+	public List<Position> reachablePositions() { // position or PositionS! ? im
+													// er mit S
+		return null; // to be done
 	}
-	
+
 	public String pieceName() {
-		return "";
+		return white ? "Weißer" : "Schwarzer" + "Bauer";
 	}
 }

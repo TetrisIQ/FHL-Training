@@ -1,6 +1,5 @@
 package kw17;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,20 +21,24 @@ public abstract class Chessman {
 		return this.p;
 	}
 
-	public abstract List<Position> reachablePositions();
-
-	public abstract String pieceName();
-
 	public boolean moveTo(Position p) {
+		if (p == null || !p.isValid() || !isReachable(p)) {
+			return false;
+		}
+		this.p = p;
 		return false;
 	}
 
 	public boolean isReachable(Position p) {
-		return false;
+		return reachablePositions().contains(p);
 	}
-	
+
 	public String toString() {
-		return "";
+		return pieceName();
 	}
+
+	public abstract List<Position> reachablePositions();
+
+	public abstract String pieceName();
 
 }

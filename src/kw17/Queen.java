@@ -24,8 +24,7 @@ public class Queen extends Chessman{
 
 	@Override
 	public String pieceName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Dame";
 	}
 	
 
