@@ -21,7 +21,7 @@ public abstract class Chessman {
 		return p;
 	}
 
-	public boolean moveTo(Position p) {
+	public boolean moveTo(Position p) throws Exception {
 		if (p == null || !p.isValid() || !isReachable(p)) {
 			return false;
 		}
@@ -29,12 +29,13 @@ public abstract class Chessman {
 		return true;
 	}
 
-	public boolean isReachable(Position p) {
-		try {
-			return reachablePositions().contains(p);
-		} catch (Exception e) {
-			return false;
+	public boolean isReachable(Position p) throws Exception {
+		for (Position pos : reachablePositions()) {
+			if (pos.equals(p))
+				return true;
 		}
+		return false;
+
 	}
 
 	public String toString() {

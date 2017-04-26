@@ -1,18 +1,12 @@
 package kw17;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
-
-import org.junit.Test;
 
 /**
  * <b>*****TetrisIQ***** </b> <br>
@@ -25,51 +19,49 @@ import org.junit.Test;
 public class Chess_Main {
 
 	public static void main(String[] args) throws Exception {
-//		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
-//				new Position('D', 8), new Position('G', 5));
-//		for (int i = 0; i < moves.size(); i++) {
-//
-//			 List<Position> submoves = moves.subList(0, i + 1);
-//			 String mans = possibleChessmans(submoves).stream().map(cm ->
-//			 cm.pieceName())
-//			 .collect(Collectors.joining(", "));
-//			 System.out.println(moves.get(i) + ": " + mans);
-//		}
-		
-		Chessman a = new Bishop('B', 2);
-		System.out.println(a.reachablePositions());
+		List<Position> moves = Arrays.asList(new Position('B', 2), new Position('B', 4), new Position('D', 4),
+				new Position('D', 8), new Position('G', 5));
+		for (int i = 0; i < moves.size(); i++) {
 
-		
+			List<Position> submoves = moves.subList(0, i + 1);
+			String mans = possibleChessmans(submoves).stream().map(cm -> cm.pieceName())
+					.collect(Collectors.joining(", "));
+			System.out.println(moves.get(i) + ": " + mans);
+		}
 
 	}
 
 	private static List<Chessman> possibleChessmans(List<Position> submoves) throws Exception {
-		if (submoves == null || submoves.isEmpty()) {
+		if (submoves == null || submoves.isEmpty())
 			return Collections.emptyList();
+		List<Chessman> liChesman = allChessman(submoves.get(0));
+
+		for (int i = 1; i < submoves.size(); i++) {
+			Position p = submoves.get(i);
+			for (Chessman chesman : liChesman) {
+				if (!chesman.moveTo(p))
+					liChesman.remove(chesman);
+
+			}
+
 		}
 
-		List<Chessman> chessmen = null;
-		for (int i = 0; i < submoves.size(); i++) {
-			Position position = submoves.get(i);
-			if (i == 0) {
-				chessmen = createAllChessman(position);
-				continue;
-			}
-			for (Chessman chessman : chessmen) {
-				if (!chessman.moveTo(position)) {
-					chessmen.remove(chessman);
-				}
-			}
-		}
-		return chessmen;
+		return liChesman;
 	}
 
-	private static List<Chessman> createAllChessman(Position position) throws Exception {
-		int file = position.getFile();
-		char rank = position.getRank();
-		return new CopyOnWriteArrayList<>(
-				Arrays.asList(new Pawn(rank, file, true), new Pawn(rank, file, false), new King(rank, file),
-						new Bishop(rank, file), new Queen(rank, file), new Knight(rank, file), new Rook(rank, file)));
+	private static List<Chessman> allChessman(Position p) throws Exception {
+		List<Chessman> li = new CopyOnWriteArrayList<>();
+		char xrank = p.getRank();
+		int yfild = p.getFile();
+		li.add(new Bishop(xrank, yfild));
+		li.add(new King(xrank, yfild));
+		li.add(new Knight(xrank, yfild));
+		li.add(new Pawn(xrank, yfild, true));
+		li.add(new Pawn(xrank, yfild, false));
+		li.add(new Queen(xrank, yfild));
+		li.add(new Rook(xrank, yfild));
+
+		return li;
 	}
 
 }

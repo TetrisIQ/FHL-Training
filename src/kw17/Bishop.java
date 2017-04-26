@@ -17,37 +17,37 @@ public class Bishop extends Chessman { // Läufer
 		super(c, i);
 	}
 
-	@Override
 	public List<Position> reachablePositions() {
 		List<Position> result = new LinkedList<>();
-		Position curentposition = currentPosition();
+		Position currentposition = currentPosition();
 		Position work;
 		int xwork = 1;
 		int ywork = 1;
-		boolean create = true;
-		while (create) {
-			create = false;
-			//rechts Runter
-			work = curentposition.relative(xwork, ywork);
-			if (work.isValid() && !work.equals(curentposition)) {
-				result.add(work);
-				create = true;
-			}
-			//rechts Hoch
-			work = curentposition.relative(xwork, ywork * -1);
-				if (work.isValid() && !work.equals(curentposition)) {
-					result.add(work);
-					create = true;
-			}
-			
-			
+		for (int i = 1; i < 9; i++) {
+		// diagonal nach Rechts oben
+		work = currentposition.relative(xwork * 1, ywork * -1);
+		if (work.isValid() && !work.equals(currentposition))
+		result.add(work);
+		// diagonal nach Lins Oben
+		work = currentposition.relative(xwork * -1, ywork * -1);
+		if (work.isValid() && !work.equals(currentposition))
+		result.add(work);
+		// diagonal nach rechs unten
+		work = currentposition.relative(xwork * 1, ywork * 1);
+		if (work.isValid() && !work.equals(currentposition))
+		result.add(work);
+		// diagonal nach links unten
+		work = currentposition.relative(xwork * -1,ywork * 1);
+		if(work.isValid() && !work.equals(currentposition))
+		result.add(work);
+		xwork++;
+		ywork++;
+		
 		}
 
 		return result;
-
 	}
 
-	@Override
 	public String pieceName() {
 		return "Läufer";
 	}
