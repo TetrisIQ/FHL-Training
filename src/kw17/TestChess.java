@@ -2,11 +2,7 @@ package kw17;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
@@ -50,13 +46,13 @@ public class TestChess {
 		Pawn pawn = new Pawn(rank, file, true);
 		assertTrue(pawn.isWhite());
 		assertFalse(pawn.isBlack());
-		//test toString Weißer Bauer
+		// test toString Weißer Bauer
 		assertEquals("Weißer Bauer", pawn.toString());
-		//test reachablePositions pawn white
+		// test reachablePositions pawn white
 		List<Position> expect = Arrays.asList(new Position(rank, 3), new Position(rank, 4));
 		assertArrayEquals(expect, pawn);
-		
-		//test reachablePositions pawn white
+
+		// test reachablePositions pawn black
 		Pawn pawnBlack = new Pawn(rank, 7, false);
 		List<Position> expectBlack = Arrays.asList(new Position(rank, 6), new Position(rank, 5));
 		assertArrayEquals(expectBlack, pawnBlack);
@@ -68,29 +64,77 @@ public class TestChess {
 		char rank = 'D';
 		int file = 4;
 		King king = new King(rank, file);
-		//test toString King
+		// test toString King
 		assertEquals("König", king.toString());
+		// test reachablePositions King
+		List<Position> expect = Arrays.asList(new Position('D', 3), new Position('D', 5), new Position('C', 4),
+				new Position('E', 4), new Position('E', 5), new Position('C', 5), new Position('E', 3),
+				new Position('C', 4));
+		assertArrayEquals(expect, king);
 
 	}
 
 	@Test
 	public void testBishop() throws Exception {
+		Bishop bishop = new Bishop('D', 4);
+		// test toString bishop
+		assertEquals("Läufer", bishop.toString());
+		// test reachablePositions bishop
+		List<Position> expect = Arrays.asList(new Position('A', 1), new Position('B', 2), new Position('C', 3),
+				new Position('E', 5), new Position('F', 6), new Position('G', 7), new Position('H', 8),
+				new Position('A', 7), new Position('B', 6), new Position('C', 5), new Position('E', 3),
+				new Position('F', 2), new Position('G', 1));
+		assertArrayEquals(expect, bishop);
 
 	}
 
 	@Test
 	public void testRook() throws Exception {
+		Rook rook = new Rook('D', 4);
+		// test toString rook
+		assertEquals("Turn", rook.toString());
+		// test reachablePositions rook
+		List<Position> expect = Arrays.asList(new Position('D', 1), new Position('D', 2), new Position('D', 3),
+				new Position('D', 5), new Position('D', 6), new Position('D', 7), new Position('D', 8),
+				new Position('A', 4), new Position('B', 4), new Position('C', 4), new Position('E', 4),
+				new Position('F', 4), new Position('G', 4), new Position('H', 4));
+		assertArrayEquals(expect, rook);
 
 	}
 
 	@Test
 	public void testQueen() throws Exception {
-
+		Queen queen = new Queen('D', 4);
+		// test toString
+		assertEquals("Dame", queen.toString());
+		// test reachablePositions Queen
+		List<Position> expect = Arrays.asList(new Position('D', 1), new Position('D', 2), new Position('D', 3),
+				new Position('D', 5), new Position('D', 6), new Position('D', 7), new Position('D', 8),
+				new Position('A', 4), new Position('B', 4), new Position('C', 4), new Position('E', 4),
+				new Position('F', 4), new Position('G', 4), new Position('H', 4), new Position('A', 1),
+				new Position('B', 2), new Position('C', 3), new Position('E', 5), new Position('F', 6),
+				new Position('G', 7), new Position('H', 8), new Position('A', 7), new Position('B', 6),
+				new Position('C', 5), new Position('E', 3), new Position('F', 2), new Position('G', 1));
+		assertArrayEquals(expect, queen);
 	}
 
 	@Test
 	public void testKnigth() throws Exception {
+		Knight knight = new Knight('D', 4);
+		// test toString
+		assertEquals("Springer", knight.toString());
+		List<Position> expect = Arrays.asList(new Position('E', 2), new Position('C', 2), new Position('E', 5),
+				new Position('C', 5), new Position('F', 3), new Position('F', 5), new Position('B', 3),
+				new Position('B', 5));
+		assertArrayEquals(expect, knight);
 
+	}
+	
+	@Test
+	public void testCaseSensitivity() throws Exception {
+		Position a = new Position('a', 1);
+		Position b = new Position('A', 1);
+		assertTrue(a.equals(b));
 	}
 
 	private void assertArrayEquals(List<Position> expect, Chessman chessman) throws Exception {
