@@ -136,6 +136,20 @@ public class TestChess {
 		Position b = new Position('A', 1);
 		assertTrue(a.equals(b));
 	}
+	
+	@Test
+	public void testCastCharAndInt() throws Exception {
+		Position a = new Position('A', 1);
+		assertEquals('A', a.getRank());
+		assertEquals(1, a.getRankInt());
+		assertEquals(1, a.getFile());
+		Position b = new Position('D', 4);
+		assertEquals('D', b.getRank());
+		assertEquals(4, b.getRankInt());
+		assertEquals(4, b.getFile());
+		
+		
+	}
 
 	private void assertArrayEquals(List<Position> expect, Chessman chessman) throws Exception {
 		expect.sort((o1, o2) -> o1.toString().compareTo(o2.toString()));
