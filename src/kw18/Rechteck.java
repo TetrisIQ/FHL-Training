@@ -1,0 +1,24 @@
+/**
+ * <b>*****TetrisIQ***** </b> <br>
+ * Autor: Alexander Werner <br>
+ * Projekt: FHL-Training <br>
+ * Classe: Rechteck.java <br>
+ * Datum: 27.04.2017 <br>
+ * Package: kw18 <br>
+ */
+package kw18;
+
+public class Rechteck extends FigMZLA {
+	
+	public Rechteck(int x, int y, int z, int a, int b) {
+		super(x, y, z, a, b);
+	}
+
+	@Override
+	public double berechneFlaeche() {
+		return this.a * this.b;
+	}
+	
+	
+
+}
