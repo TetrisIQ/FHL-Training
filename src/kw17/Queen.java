@@ -13,11 +13,26 @@ import java.util.List;
  */
 public class Queen extends Chessman {
 
+	/**
+	 * Konstruktor zum erstellen eines neuen {@link Queen}
+	 * 
+	 * @param c
+	 *            Das Buchstaben Feld auf dem sich die Dame befindet <br>
+	 *            auf der X-Achse
+	 * @param i
+	 *            Das Zahlen Feld auf dem sich die Dame befindet <br>
+	 *            auf der y-Achse
+	 */
 	public Queen(char c, int i) throws Exception {
 		super(c, i);
 	}
 
-	@Override
+	/**
+	 * Gibt eine Liste der Erreichbaren Positionen zurück <br>
+	 * ausgehend von der Position der Figur gemäß den Schachregeln <br>
+	 * 
+	 * @return Eine Liste mit erreichbaren Positionen
+	 */
 	public List<Position> reachablePositions() throws Exception {
 		List<Position> result = new LinkedList<>();
 		Position curentposition = currentPosition();
@@ -40,36 +55,38 @@ public class Queen extends Chessman {
 		result.add(new Position('F', curentposition.getFile()));
 		result.add(new Position('G', curentposition.getFile()));
 		result.add(new Position('H', curentposition.getFile()));
-		//digonale Wege
+		// digonale Wege
 		int xwork = 1;
 		int ywork = 1;
-		
+
 		for (int i = 1; i < 9; i++) {
-		// diagonal nach Rechts oben
-		work = curentposition.relative(xwork * 1, ywork * -1);
-		if (work.isValid() && !work.equals(curentposition))
-		result.add(work);
-		// diagonal nach Lins Oben
-		work = curentposition.relative(xwork * -1, ywork * -1);
-		if (work.isValid() && !work.equals(curentposition))
-		result.add(work);
-		// diagonal nach rechs unten
-		work = curentposition.relative(xwork * 1, ywork * 1);
-		if (work.isValid() && !work.equals(curentposition))
-		result.add(work);
-		// diagonal nach links unten
-		work = curentposition.relative(xwork * -1,ywork * 1);
-		if(work.isValid() && !work.equals(curentposition))
-		result.add(work);
-		xwork++;
-		ywork++;
-		
+			// diagonal nach Rechts oben
+			work = curentposition.relative(xwork * 1, ywork * -1);
+			if (work.isValid() && !work.equals(curentposition))
+				result.add(work);
+			// diagonal nach Lins Oben
+			work = curentposition.relative(xwork * -1, ywork * -1);
+			if (work.isValid() && !work.equals(curentposition))
+				result.add(work);
+			// diagonal nach rechs unten
+			work = curentposition.relative(xwork * 1, ywork * 1);
+			if (work.isValid() && !work.equals(curentposition))
+				result.add(work);
+			// diagonal nach links unten
+			work = curentposition.relative(xwork * -1, ywork * 1);
+			if (work.isValid() && !work.equals(curentposition))
+				result.add(work);
+			xwork++;
+			ywork++;
+
 		}
 
 		return result;
 	}
 
-	@Override
+	/**
+	 * @return Den Namen der Figur 
+	 */
 	public String pieceName() {
 		return "Dame";
 	}

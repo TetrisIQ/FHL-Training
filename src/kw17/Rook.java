@@ -13,15 +13,30 @@ import java.util.List;
  */
 public class Rook extends Chessman {
 
+	/**
+	 * Konstruktor zum erstellen eines neuen {@link Rook}
+	 * 
+	 * @param c
+	 *            Das Buchstaben Feld auf dem sich der Turm befindet <br>
+	 *            auf der X-Achse
+	 * @param i
+	 *            Das Zahlen Feld auf dem sich der Turm befindet <br>
+	 *            auf der y-Achse
+	 */
 	public Rook(char c, int i) throws Exception {
 		super(c, i);
 	}
 
-	@Override
+	/**
+	 * Gibt eine Liste der Erreichbaren Positionen zurück <br>
+	 * ausgehend von der Position der Figur gemäß den Schachregeln <br>
+	 * 
+	 * @return Eine Liste mit erreichbaren Positionen
+	 */
 	public List<Position> reachablePositions() throws Exception {
 		List<Position> result = new LinkedList<>();
 		Position pos = currentPosition();
-		//alle wege auf der Y achse
+		// alle wege auf der Y achse
 		result.add(new Position(pos.getRank(), 1));
 		result.add(new Position(pos.getRank(), 2));
 		result.add(new Position(pos.getRank(), 3));
@@ -40,11 +55,12 @@ public class Rook extends Chessman {
 		result.add(new Position('G', pos.getFile()));
 		result.add(new Position('H', pos.getFile()));
 
-		
 		return result;
 	}
 
-	@Override
+	/**
+	 * @return Den Namen der Figur 
+	 */
 	public String pieceName() {
 		return "Turn";
 	}

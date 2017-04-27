@@ -14,20 +14,51 @@ import java.util.List;
 public class Pawn extends Chessman {
 	private boolean white;
 
+	/**
+	 * Konstruktor zum erstellen eines neuen {@link Pawn}
+	 * 
+	 * @param c
+	 *            Das Buchstaben Feld auf dem sich der Springer befindet <br>
+	 *            auf der X-Achse
+	 * @param i
+	 *            Das Zahlen Feld auf dem sich der Springer befindet <br>
+	 *            auf der y-Achse
+	 * @param white
+	 *            <code>true</code> wenn der Bauer weiß sein soll <br>
+	 *            <code>false</code> wenn der Bauer Schwarz sein soll
+	 */
 	public Pawn(char c, int i, Boolean white) throws Exception {
 		super(c, i);
 		this.white = white;
 	}
 
+	/**
+	 * Überprüft ob der Bauer weiß ist
+	 * 
+	 * @return <code>true</code> Wenn der Bauer weiß ist <br>
+	 *         <code>false</code> wenn der bauer Schwarz ist
+	 */
 	public boolean isWhite() {
 		return this.white;
 	}
 
+	/**
+	 * Überprüft ob der Bauer schwarz ist
+	 * 
+	 * @return <code>true</code> Wenn der Bauer Schwarz ist <br>
+	 *         <code>false</code> Wenn der Bauer Weiß ist
+	 */
 	public boolean isBlack() {
 		return !(this.white);
 	}
 
-	public List<Position> reachablePositions() throws Exception { 
+	/**
+	 * Gibt eine Liste der Erreichbaren Positionen zurück <br>
+	 * ausgehend von der Position der Figur gemäß den Schachregeln <br>
+	 * 
+	 * @return Eine Liste mit erreichbaren Positionen
+	 */
+	public List<Position> reachablePositions() throws Exception {
 		List<Position> result = new LinkedList<>();
 		Position curentposition = currentPosition();
 		int yfile = curentposition.getFile();
@@ -50,6 +81,9 @@ public class Pawn extends Chessman {
 		return result;
 	}
 
+	/**
+	 * @return Gibt den namen der Figur incl. der Farbe aus
+	 */
 	public String pieceName() {
 		return white ? "Weißer Bauer" : "Schwarzer Bauer";
 	}

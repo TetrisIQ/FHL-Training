@@ -13,12 +13,27 @@ import java.util.List;
  */
 public class King extends Chessman {
 
+	/**
+	 * Konstruktor zum erstellen eines neuen {@link King}
+	 * 
+	 * @param c
+	 *            Das Buchstaben Feld auf dem sich der König befindet <br>
+	 *            auf der X-Achse
+	 * @param i
+	 *            Das Zahlen Feld auf dem sich der König befindet <br>
+	 *            auf der y-Achse
+	 */
 	public King(char c, int i) throws Exception {
 		super(c, i);
 
 	}
 
-	@Override
+	/**
+	 * Gibt eine Liste der Erreichbaren Positionen zurück <br>
+	 * ausgehend von der Position der Figur gemäß den Schachregeln <br>
+	 * 
+	 * @return Eine Liste mit erreichbaren Positionen
+	 */
 	public List<Position> reachablePositions() throws Exception {
 		List<Position> result = new LinkedList<>();
 		Position pos = currentPosition();
@@ -33,25 +48,26 @@ public class King extends Chessman {
 		result.add(new Position(pos.getRank(), (pos.getFile() - 1)));
 		// ein nach unten
 		result.add(new Position(pos.getRank(), (pos.getFile() + 1)));
-		
-		//diagonal nach Rechts oben
+
+		// diagonal nach Rechts oben
 		position = pos.relative(1, -1);
 		result.add(position);
-		//diagonal nach Lins Oben
+		// diagonal nach Lins Oben
 		position = pos.relative(-1, -1);
 		result.add(position);
-		//diagonal nach rechs unten
+		// diagonal nach rechs unten
 		position = pos.relative(1, 1);
 		result.add(position);
-		//diagonal nach links unten
+		// diagonal nach links unten
 		position = pos.relative(-1, 1);
 		result.add(position);
-		
 
 		return result;
 	}
 
-	@Override
+	/**
+	 * gibt den Namen der Figur aus
+	 */
 	public String pieceName() {
 		return "König";
 	}

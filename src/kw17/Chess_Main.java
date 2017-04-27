@@ -31,6 +31,15 @@ public class Chess_Main {
 
 	}
 
+	/**
+	 * Überprüft welche Schach Figur die beschriebene zugfolge meistern kann
+	 * 
+	 * @param submoves
+	 *            Eine Liste an {@link Position}
+	 * @return Alle {@link Chessman} die die Nächste {@link Position} erreichen
+	 *         können
+	 * @throws Exception
+	 */
 	private static List<Chessman> possibleChessmans(List<Position> submoves) throws Exception {
 		if (submoves == null || submoves.isEmpty())
 			return Collections.emptyList();
@@ -49,6 +58,20 @@ public class Chess_Main {
 		return liChesman;
 	}
 
+	/**
+	 * Errstellt alle {@link Chessman}s die möglich sind <br>
+	 * {@link Bishop} <br>
+	 * {@link King}<br>
+	 * {@link Pawn} <br>
+	 * {@link Queen} <br>
+	 * {@link Rook}
+	 * 
+	 * @param p
+	 *            Die {@link Position} auf der die Figuren erstellt werden
+	 *            sollen
+	 * @return eine Lisste mit allen Schachfiguren auf der Startposition
+	 * @throws Exception
+	 */
 	private static List<Chessman> allChessman(Position p) throws Exception {
 		List<Chessman> li = new CopyOnWriteArrayList<>();
 		char xrank = p.getRank();

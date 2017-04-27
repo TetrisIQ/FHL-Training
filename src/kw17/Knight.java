@@ -13,11 +13,26 @@ import java.util.List;
  */
 public class Knight extends Chessman {
 
+	/**
+	 * Konstruktor zum erstellen eines neuen {@link Knight}
+	 * 
+	 * @param c
+	 *            Das Buchstaben Feld auf dem sich der Springer befindet <br>
+	 *            auf der X-Achse
+	 * @param i
+	 *            Das Zahlen Feld auf dem sich der Springer befindet <br>
+	 *            auf der y-Achse
+	 */
 	public Knight(char c, int i) throws Exception {
 		super(c, i);
 	}
 
-	@Override
+	/**
+	 * Gibt eine Liste der Erreichbaren Positionen zurück <br>
+	 * ausgehend von der Position der Figur gemäß den Schachregeln <br>
+	 * 
+	 * @return Eine Liste mit erreichbaren Positionen
+	 */
 	public List<Position> reachablePositions() {
 		List<Position> result = new LinkedList<>();
 		Position currentposition = currentPosition();
@@ -63,7 +78,9 @@ public class Knight extends Chessman {
 		return result;
 	}
 
-	@Override
+	/**
+	 * @return Den Namen der figur
+	 */
 	public String pieceName() {
 		return "Springer";
 	}
