@@ -1,6 +1,9 @@
 package kw18;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import com.sun.corba.se.impl.orbutil.RepositoryIdUtility;
 
 public class Main_18 {
 
@@ -20,23 +23,21 @@ public class Main_18 {
 		new Ellipse(4, 10, 4, 10, 20);
 		new Kreis(10, 10, 10, 5);
 		new Quadrat(100, 200, 5, 35);
-		
+
 		List<Figur> test = Figur.getAlleFiguren();
-//		System.out.println(test);
+		// System.out.println(test);
 		bubbleSort(test);
-//		System.out.println(test);
-		
+		// System.out.println(test);
+
 		for (Figur t : test) {
 			System.out.println(t);
 		}
 
 	}
-	
 
 	
-	
 
-	static void bubbleSort(List<Figur> list) {
+	private static void bubbleSort(List<Figur> list) {
 		boolean unsorted = true;
 		while (unsorted) {
 			unsorted = false;

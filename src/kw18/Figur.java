@@ -11,7 +11,7 @@ package kw18;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Figur {
+public abstract class Figur {
 
 	int x;
 	int y;
@@ -36,10 +36,10 @@ public class Figur {
 		return this.z;
 	}
 
-	public static Figur getZsortierteFiguren() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract double berechneFlaeche();
+
+
+
 
 
 
