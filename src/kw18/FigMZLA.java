@@ -36,15 +36,15 @@ public abstract class FigMZLA extends Figur {
 	}
 
 
-	public static List<Figur> getZsortierteFiguren() {
-		List<Figur> result = getAlleFiguren();
-
-		for (int i = 0; i <= result.size(); i++) {
-			if (!((result.get(i)).getZ() >= 51 && result.get(i).getZ() >= 0)) {
-				result.remove(i);
-			}
-		}
-
-		return result;		
-	}
+//	public static List<Figur> getZsortierteFiguren() {
+//		List<Figur> result = getAlleFiguren();
+//
+//		for (int i = 0; i <= result.size(); i++) {
+//			if (!((result.get(i)).getZ() >= 51 && result.get(i).getZ() >= 0)) {
+//				result.remove(i);
+//			}
+//		}
+//
+//		return result;		
+//	}
 }
