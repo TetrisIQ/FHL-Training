@@ -8,7 +8,6 @@
  */
 package kw18;
 
-import java.util.List;
 
 public class Main_Aufgabe {
 
@@ -33,21 +32,9 @@ public class Main_Aufgabe {
 		new Kreis(10, 10, 10, 5);
 		new Quadrat(100, 200, 5, 35);
 
-		System.out.println(avgFlaecheninhalt());
+		System.out.println(Figur.avgFlaecheninhalt());
 	}
 
-	static String avgFlaecheninhalt() {
-		List<Figur> list = FigMZLA.getZsortierteFiguren();
-		int counter = 0;
-		double sum = 0;
 
-		for (int i = 0; i <= list.size() - 1; i++) {
-			sum += (list.get(i)).berechneFlaeche();
-			counter++;
-		}
-
-		return "Die Gesamtfläche aller " + counter + " Figuren beträgt " + sum + " Flächeneinheiten. " + 
-				"\n" + "Die durchschnittliche Fläche pro Figur beträgt "+ (sum/100*counter) +" Flächeneinheiten.";
-	}
 
 }

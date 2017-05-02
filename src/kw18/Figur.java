@@ -17,7 +17,6 @@ public abstract class Figur {
 	int y;
 	int z;
 	private static List<Figur> figuren = new LinkedList<>();
-	private static List<Figur> zFiguren = new LinkedList<>();
 
 	public Figur(int x, int y, int z) {
 		this.x = x;
@@ -25,14 +24,15 @@ public abstract class Figur {
 		this.z = z;
 		figuren.add(this);
 	}
-	
+
 	public static final int anzFiguren() {
 		return figuren.size();
 	}
+
 	public static final List<Figur> getAlleFiguren() {
 		return figuren;
 	}
-	
+
 	public int getZ() {
 		return this.z;
 	}
@@ -56,30 +56,34 @@ public abstract class Figur {
 		}
 		return list;
 	}
-	
-	static List<Figur> filterZ(int a, int b, List<Figur> f) {
-		List<Figur> result = new LinkedList<>(f);
 
-		for (int i = 0; i <= result.size() - 1; i++) {
-			if (!((result.get(i)).getZ() >= a && result.get(i).getZ() >= b)) {
-				result.remove(i);
+	static List<Figur> filterZ(int a, int b, List<Figur> f) {
+		List<Figur> result = new LinkedList<>();
+
+		for (int i = 0; i < f.size(); i++) {
+			if (((f.get(i)).getZ() >= a && f.get(i).getZ() <= b)) {
+				result.add(f.get(i));
 			}
 		}
+		return result;
+		// return figuren.stream().filter(figur -> (figur.z >= a && figur.z <=
+		// b))
+		// .collect(Collectors.toList());
 
-		return result;	
-		
-		
 	}
 
+	static String avgFlaecheninhalt() {
+		List<Figur> list = filterZ(0, 50, figuren);
+		int counter = 0;
+		double sum = 0;
 
+		for (int i = 0; i <= list.size() - 1; i++) {
+			sum += (list.get(i)).berechneFlaeche();
+			counter++;
+		}
 
+		return "Die Gesamtfläche aller " + counter + " Figuren beträgt " + sum + " Flächeneinheiten. " + "\n"
+				+ "Die durchschnittliche Fläche pro Figur beträgt " + (sum / counter) + " Flächeneinheiten.";
+	}
 
-
-
-	
-	
-	
-	
 }
-
-	
