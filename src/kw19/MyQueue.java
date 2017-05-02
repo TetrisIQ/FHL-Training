@@ -8,6 +8,8 @@
  */
 package kw19;
 
+import java.util.NoSuchElementException;
+
 public class MyQueue<T> {
 	private T[] array;
 	private int size;
@@ -28,7 +30,7 @@ public class MyQueue<T> {
 	}
 
 	public boolean enter(T t) {
-		if (array.length >= CAPACITY)
+		if (array.length + 1 == CAPACITY)
 			return false;
 		ende = inc(ende);
 		array[ende] = t;
@@ -37,11 +39,15 @@ public class MyQueue<T> {
 	}
 
 	public T front() {
-		if (array.length == 0) return null;
+		// if (array.length == 0) return null;
+		if (isEmpty())
+			return null;
 		return array[anfang];
 	}
 
 	public T leave() {
+		if (isEmpty())
+			throw new NoSuchElementException();
 		T ret = front();
 		deQueue();
 		return ret;
@@ -59,15 +65,21 @@ public class MyQueue<T> {
 			i = 0;
 		return i;
 	}
-	
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (T t : array) {
-			sb.append(t);
+		sb.append("[");
+		for (int i = anfang; i <= ende; i++) {
+			if (!(i == anfang))
+				sb.append(", ");
+			sb.append(array[i]);
+
 		}
-		
+
+		sb.append("]");
+
 		return sb.toString();
-		
+
 	}
 
 }
