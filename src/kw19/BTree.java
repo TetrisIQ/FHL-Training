@@ -8,11 +8,17 @@
  */
 package kw19;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 public class BTree<T extends Comparable<T>> {
 
-	//Insert methode um in bäume einzufügen 
+	// Insert methode um in bäume einzufügen
 	static <T extends Comparable<T>> void insert(T t, Node<T> tree) {
-		if (tree == null) return;
+		if (tree == null)
+			return;
 		if (tree.value.compareTo(t) == 0) {
 			if (tree.left == null) {
 				tree.left = new Node<T>(t, null, null);
@@ -29,16 +35,34 @@ public class BTree<T extends Comparable<T>> {
 			}
 		}
 	}
-	
+
 	public String inorder(Node<T> t) {
-//		if (n == null) return "";
-//		return inorder(n.left) + n + inorder(n.right);
-		
-		if (t == null) return "";
+
+		if (t == null)
+			return "";
 		return inorder(t.left) + t + inorder(t.right);
-		}
+	}
 	
+	public List<T> buildInOrderList(Node<T> tree) {
+		List<T> ret = new LinkedList<>();
+		buildInOrderList(tree);
 		
-	
+		return ret;
+		
+	}
+
+	public <T extends Comparable<T>> List<T> bsort(List<T> ls) {
+		Node<T> tree = new Node<T>(null, null, null);
+		List<T> ret = new LinkedList<>();
+		for (T t : ls) {
+			insert(t, tree);
+		}
+		
+		
+		
+		
+		return ret;
+
+	}
 
 }
