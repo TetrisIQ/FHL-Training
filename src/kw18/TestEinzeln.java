@@ -14,10 +14,6 @@ public class TestEinzeln {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Figur a = new Rechteck(5, 5, -10, 10, 20);
-		System.out.println(a.berechneFlaeche());
-	   Figur b =  new RWDreieck(30, 2, 80, 3, 4);
-	   System.out.println(b.berechneFlaeche());
 	    new Ellipse(4, 10, 31, 10, 20);
 	    new Kreis(10, 10, 31, 5);
 	    new Quadrat(100, 200, 13, 35);

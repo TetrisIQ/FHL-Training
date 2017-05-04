@@ -10,25 +10,35 @@ package kw19;
 
 public class BTree<T extends Comparable<T>> {
 
-	static <T extends Comparable<T>> void insert(T t, Node tree) {
-		if (tree == null)
-			return;
-		if (tree.value.equals(t))
-			return;
-		if (t < tree.value) {
+	//Insert methode um in bäume einzufügen 
+	static <T extends Comparable<T>> void insert(T t, Node<T> tree) {
+		if (tree == null) return;
+		if (tree.value.compareTo(t) == 0) {
 			if (tree.left == null) {
-				tree.left = new Node(v, null, null);
-			} else
-				insert(v, tree.left);
+				tree.left = new Node<T>(t, null, null);
+			}
 		}
-		if (v > tree.value) {
+		if (tree.value.compareTo(t) > 0) {
 			if (tree.right == null) {
-				tree.right = new Node(v, null, null);
-			} else
-				insert(v, tree.right);
+				tree.right = new Node<T>(t, null, null);
+			}
+		}
+		if (tree.value.compareTo(t) < 0) {
+			if (tree.left == null) {
+				tree.left = new Node<T>(t, null, null);
+			}
 		}
 	}
 	
+	public String inorder(Node<T> t) {
+//		if (n == null) return "";
+//		return inorder(n.left) + n + inorder(n.right);
+		
+		if (t == null) return "";
+		return inorder(t.left) + t + inorder(t.right);
+		}
+	
+		
 	
 
 }

@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Figur {
 
-	int x;
-	int y;
-	int z;
+	protected int x;
+	protected int y;
+	protected int z;
 	private static List<Figur> figuren = new LinkedList<>();
 
 	/**
@@ -63,12 +63,6 @@ public class Figur {
 		return this.z;
 	}
 
-//	/**
-//	 * Berrechnet die fläche einer Figur
-//	 * 
-//	 * @return die fläche der Figur
-//	 */
-//	public abstract double berechneFlaeche();
 
 	/**
 	 * Sortiert mittels bubblesort eine Liste mit Figuren nach ihrem Z wert

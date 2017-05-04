@@ -13,8 +13,8 @@ package kw19;
  */
 public class Node <T extends Comparable<T>> {
 
-		public Node left;
-		public Node right;
+		public Node<T> left;
+		public Node<T> right;
 		public T value;
 
 		/**
@@ -23,7 +23,7 @@ public class Node <T extends Comparable<T>> {
 		 * @param l Der linke Kindknoten
 		 * @param r Der rechte Kindknoten
 		 */
-		public Node(T t, Node l, Node r) {
+		public Node(T t, Node<T> l, Node<T> r) {
 			value = t;
 			left = l;
 			right = r;
