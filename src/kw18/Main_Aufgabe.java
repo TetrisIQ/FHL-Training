@@ -8,12 +8,8 @@
  */
 package kw18;
 
-
 public class Main_Aufgabe {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		new Rechteck(5, 5, -10, 10, 20);
@@ -34,7 +30,5 @@ public class Main_Aufgabe {
 
 		System.out.println(Figur.avgFlaecheninhalt());
 	}
-
-
 
 }

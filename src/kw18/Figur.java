@@ -11,13 +11,24 @@ package kw18;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Figur {
+public class Figur {
 
 	int x;
 	int y;
 	int z;
 	private static List<Figur> figuren = new LinkedList<>();
 
+	/**
+	 * Konstrukror für figuren
+	 * 
+	 * @param x
+	 *            X Coordinate der Figur
+	 * @param y
+	 *            Y Coordinate der Figur
+	 * @param z
+	 *            Z Coordinate der Figur <br>
+	 *            Legt die angelegten figuren statisch in einer liste ab
+	 */
 	public Figur(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
@@ -25,20 +36,45 @@ public abstract class Figur {
 		figuren.add(this);
 	}
 
+	/**
+	 * Gibt die anzahl aller Figuren zurük
+	 * 
+	 * @return die anzahl aller Figuren
+	 */
 	public static final int anzFiguren() {
 		return figuren.size();
 	}
 
+	/**
+	 * gibt eine liste aller figuren zurück
+	 * 
+	 * @return eine liste mit allen figuren
+	 */
 	public static final List<Figur> getAlleFiguren() {
 		return figuren;
 	}
 
-	public int getZ() {
+	/**
+	 * retrunt den Z wert einer Figur
+	 * 
+	 * @return den Z wert einer Figur
+	 */
+	public int getZ() { // unnötig
 		return this.z;
 	}
 
-	public abstract double berechneFlaeche();
+//	/**
+//	 * Berrechnet die fläche einer Figur
+//	 * 
+//	 * @return die fläche der Figur
+//	 */
+//	public abstract double berechneFlaeche();
 
+	/**
+	 * Sortiert mittels bubblesort eine Liste mit Figuren nach ihrem Z wert
+	 * 
+	 * @return eine Sortierte Liste
+	 */
 	public static List<Figur> getZsortierteFiguren() {
 		List<Figur> list = new LinkedList<>(figuren);
 		boolean unsorted = true;
@@ -57,6 +93,17 @@ public abstract class Figur {
 		return list;
 	}
 
+	/**
+	 * Filtert die Liste mit figuren nach oberer und unterer schranke
+	 * 
+	 * @param a
+	 *            Oberre schranke
+	 * @param b
+	 *            Unterre schranke
+	 * @param f
+	 *            Liste mit Figuten
+	 * @return eine Liste mit Figuren die den zwischen den Schranken liegen
+	 */
 	static List<Figur> filterZ(int a, int b, List<Figur> f) {
 		List<Figur> result = new LinkedList<>();
 
@@ -66,19 +113,22 @@ public abstract class Figur {
 			}
 		}
 		return result;
-		// return figuren.stream().filter(figur -> (figur.z >= a && figur.z <=
-		// b))
-		// .collect(Collectors.toList());
 
 	}
 
+	/**
+	 * Berrechnet die durchschnittliche fläche
+	 * 
+	 * @return Gibt einen String in der form wie es in aufgabe 18.4 gefordert
+	 *         ist aus.
+	 */
 	static String avgFlaecheninhalt() {
 		List<Figur> list = filterZ(0, 50, figuren);
 		int counter = 0;
 		double sum = 0;
 
 		for (int i = 0; i <= list.size() - 1; i++) {
-			sum += (list.get(i)).berechneFlaeche();
+			sum += ((FigMZLA) list.get(i)).berechneFlaeche();
 			counter++;
 		}
 
