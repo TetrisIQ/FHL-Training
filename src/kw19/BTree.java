@@ -12,12 +12,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import kw19.Node;
 
-public class BTree<T extends Comparable<T>> {
+public class BTree<T extends Comparable<T>>  {
 
 	// Insert methode um in bäume einzufügen
 	static <T extends Comparable<T>> void insert(T t, Node<T> tree) {
-		if (tree == null)
+		if (tree.value == null || tree == null)
 			return;
 		if (tree.value.compareTo(t) == 0) {
 			if (tree.left == null) {
@@ -43,22 +44,14 @@ public class BTree<T extends Comparable<T>> {
 		return inorder(t.left) + t + inorder(t.right);
 	}
 	
-	public List<T> buildInOrderList(Node<T> tree) {
-		List<T> ret = new LinkedList<>();
-		buildInOrderList(tree);
-		
-		return ret;
-		
-	}
 
-	public <T extends Comparable<T>> List<T> bsort(List<T> ls) {
-		Node<T> tree = new Node<T>(null, null, null);
-		List<T> ret = new LinkedList<>();
+
+	public static <T extends Comparable<T>> List<T> bsort(List<T> ls) {
+		Node<T> tree = new Node<T>(null, null, null); //neuer Baum
 		for (T t : ls) {
-			insert(t, tree);
+			insert(t, tree);	//baut den baum aus einer liste
 		}
-		
-		
+		List<T> ret = tree.buildInOrderList(tree);
 		
 		
 		return ret;

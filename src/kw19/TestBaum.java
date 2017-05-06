@@ -21,6 +21,9 @@ public class TestBaum {
 			values.add(new MyObject(r.nextInt(i)));
 		}
 		System.out.println("Unsortiert: " + values);
-//		System.out.println("Sortiert: " + BTree.bsort(values));
+		System.out.println("Sortiert: " + BTree.bsort(values));
+		
+		
+		
 	}
 }
