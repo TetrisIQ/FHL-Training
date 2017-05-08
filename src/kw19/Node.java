@@ -8,8 +8,6 @@
  */
 package kw19;
 
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Zum speichern von Knoten und ihren Eigenschaften
@@ -44,30 +42,4 @@ public class Node<T extends Comparable<T>> {
 		return value + " ";
 	}
 
-	public List<T> buildInOrderList(Node<T> tree) {
-		List<T> ret = new LinkedList<>();
-		
-		
-		
-		
-		
-		
-		
-//		if (tree == null || tree.value == null)
-//			return ret;
-		
-		return buildInOrderList(tree, ret);
-
-	}
-	
-	
-	public List<T> buildInOrderList(Node<T> tree, List<T> ret) {
-		if (tree == null|| tree.value == null)
-			return ret;
-		ret.add(tree.value);
-		buildInOrderList(tree.left, ret);
-		buildInOrderList(tree.right, ret);
-		return ret;
-
-	}
 }
