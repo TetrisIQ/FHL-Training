@@ -33,13 +33,8 @@ public class MyQueue<T> {
 		if (isEmpty())
 			throw new NoSuchElementException();
 		T ret = front();
-		deQueue();
-		return ret;
-
-	}
-
-	public void deQueue() {
 		queue.remove(0);
+		return ret;
 
 	}
 
@@ -48,8 +43,9 @@ public class MyQueue<T> {
 		sb.append("[");
 
 		for (T t : queue) {
-			if (!(queue.get(0) == t))
+			if (!(queue.get(0) == t)) {
 				sb.append(", ");
+			}
 			sb.append(t);
 		}
 		sb.append("]");
