@@ -21,8 +21,8 @@ public class GameControler {
 	
 	public void setField(int f) {
 		model.swap(f);
+		view.update();
 	}
 	
 	
-
 }

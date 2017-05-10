@@ -27,7 +27,7 @@ public class GameModel {
 		while (!process.isEmpty()) {
 			ret.add(process.remove((int) (Math.random() * process.size())));
 		}
-		list = ret;
+//		list = ret;
 		
 
 	}
@@ -35,15 +35,16 @@ public class GameModel {
 	public static void swap(int i, int y) {
 		int iWert = list.get(i);
 		int yWert = list.get(y);
-
+		
 		list.set(i, yWert);
 		list.set(y, iWert);
+		
 
 	}
 	public static void swap(int i) {
 		if (register == 20) //heißt leer 
 			i = register;
-		if (!(register == 20)) {
+		else if (!(register == 20)) {
 			swap(register, i);
 			register = 20; // register wieder auf "leer" setzen 
 		}
