@@ -14,8 +14,13 @@ import kw19.Node;
 
 public class BTree<T extends Comparable<T>> {
 
-	// Insert methode um in bäume einzufügen
-
+	/**
+	 * Inorder durchlauf eines Sortierten Baumes
+	 * 
+	 * @param tree
+	 *            Der baum der Sortiert werden soll
+	 * @return Den Baum sortiert als String
+	 */
 	public static <T extends Comparable<T>> String inorder(Node<T> tree) {
 
 		if (tree == null)
@@ -23,6 +28,13 @@ public class BTree<T extends Comparable<T>> {
 		return inorder(tree.left) + tree + inorder(tree.right);
 	}
 
+	/**
+	 * Sortiert eine Liste indem ein sortierter Binär Baum aufgebaut wird
+	 * 
+	 * @param ls
+	 *            Eine Liste mit zu sortierenden elementen
+	 * @return Eine Liste mit den Sortierten Elementen
+	 */
 	public static <T extends Comparable<T>> List<T> bsort(List<T> ls) {
 		Node<T> tree = buildTree(ls);
 
@@ -33,7 +45,14 @@ public class BTree<T extends Comparable<T>> {
 
 	}
 
-	public static <T extends Comparable<T>> Node<T> buildTree(List<T> ls) {
+	/**
+	 * Baut einen Baum aus Einer Liste auf
+	 * 
+	 * @param ls
+	 *            Eine Liste aus der der Baum gebaut werden soll
+	 * @return Ein Sortierten Baum
+	 */
+	private static <T extends Comparable<T>> Node<T> buildTree(List<T> ls) {
 		Node<T> tree = new Node<T>(null, null, null); // neuer Baum
 		for (T t : ls) {
 			insert(t, tree); // baut den baum aus einer liste
@@ -41,8 +60,18 @@ public class BTree<T extends Comparable<T>> {
 		return tree;
 	}
 
+	/**
+	 * Fügt eine element eienem Baum hinzu
+	 * 
+	 * @param t
+	 *            das Element das hinzugefügt werden soll
+	 * @param tree
+	 *            Der Baum zu dem hinzugefügt werden soll
+	 */
 	static <T extends Comparable<T>> void insert(T t, Node<T> tree) {
 		if (tree == null)
+			return;
+		if (t == null)
 			return;
 		if (tree.value == null || t.compareTo(tree.value) == 0)
 			if (tree.value == null)
@@ -65,6 +94,13 @@ public class BTree<T extends Comparable<T>> {
 		}
 	}
 
+	/**
+	 * Geht einen Baum inOrder durch und erzeugt eine Liste
+	 * 
+	 * @param node
+	 *            Der Baum der zu einer Liste gewandelt werden soll
+	 * @return Eine sortierte Liste
+	 */
 	public static <T extends Comparable<T>> List<T> buildInOrderList(Node<T> node) {
 		List<T> ret = new LinkedList<>();
 		if (node == null)

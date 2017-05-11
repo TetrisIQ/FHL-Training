@@ -15,20 +15,44 @@ import java.util.NoSuchElementException;
 public class MyQueue<T> {
 	private List<T> queue = new LinkedList<T>();
 
+	/**
+	 * Überprüft ob die Queue Leer ist
+	 * 
+	 * @return <code>true</code> wenn die Queue leer ist <br>
+	 *         <code>false</code> wenn die Liste nicht leer ist
+	 */
 	public boolean isEmpty() {
 		return queue.isEmpty();
 	}
 
+	/**
+	 * Fügt eine element der Queue am ende der Queue hinzu
+	 * 
+	 * @param t
+	 *            Das element das hinzugefügt werden soll
+	 * @return <code>true</code> wenn das hinzugügen erfolgreich ist
+	 *         <code>false</code> wenn das hinzufügen nicht erfolgreich ist
+	 */
 	public boolean enter(T t) {
 		return queue.add(t);
 	}
 
+	/**
+	 * Gibt das erste element der Queue zurück
+	 * 
+	 * @return Das erste Element der Queue
+	 */
 	public T front() {
 		if (isEmpty())
 			return null;
 		return queue.get(0);
 	}
 
+	/**
+	 * Gibt das erste Element der Queue zurück und Löscht es anschlißend
+	 * 
+	 * @return Das Erste Element der Queue
+	 */
 	public T leave() {
 		if (isEmpty())
 			throw new NoSuchElementException();
@@ -37,7 +61,10 @@ public class MyQueue<T> {
 		return ret;
 
 	}
-
+	/**
+	 * toString Methode für {@link MyQueue}
+	 * @return Die Queue als String 
+	 */
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");

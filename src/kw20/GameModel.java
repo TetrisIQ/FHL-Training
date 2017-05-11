@@ -12,41 +12,52 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.imageio.spi.RegisterableService;
-
-import com.sun.org.apache.regexp.internal.recompile;
+import javax.swing.Timer;
 
 public class GameModel {
 
-	private static List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+	private static List<Integer> list = new LinkedList<>();
 	private static int register = 20;
-	
+	public static final int SIZE = 4;
+	public static double time = 0.000;
+	public static Timer timer = new Timer(20, e -> {
+		time += 0.001;
+	});
+
 	public static void createList() {
+		if (list.isEmpty())
+			fillList();
 		List<Integer> ret = new LinkedList<Integer>();
 		List<Integer> process = new LinkedList<Integer>(list);
 		while (!process.isEmpty()) {
 			ret.add(process.remove((int) (Math.random() * process.size())));
 		}
-//		list = ret;
-		
+		list = ret;
+
+	}
+
+	private static void fillList() {
+		for (int i = 0; i < SIZE * SIZE; i++) {
+			list.add(i);
+		}
 
 	}
 
 	public static void swap(int i, int y) {
 		int iWert = list.get(i);
 		int yWert = list.get(y);
-		
+
 		list.set(i, yWert);
 		list.set(y, iWert);
-		
 
 	}
+
 	public static void swap(int i) {
-		if (register == 20) //heißt leer 
-			i = register;
+		if (register == 20) // heißt leer
+			register = i;
 		else if (!(register == 20)) {
 			swap(register, i);
-			register = 20; // register wieder auf "leer" setzen 
+			register = 20; // register wieder auf "leer" setzen
 		}
 	}
 
@@ -56,11 +67,11 @@ public class GameModel {
 
 	public static boolean isFinish() {
 		boolean ready = false;
-		for (int i = 0; i < list.size() -1 ; i++) {
+		for (int i = 0; i < list.size() - 1; i++) {
 			if (list.get(i) < list.get(i + 1))
 				ready = true;
-				else 
-					return false;
+			else
+				return false;
 		}
 		return ready;
 	}
