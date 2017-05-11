@@ -20,7 +20,6 @@ public class TestBaum {
 		for (int i = 20; i >= 1; i--) {
 			values.add(new MyObject(r.nextInt(i)));
 		}
-		values.add(null);
 		System.out.println("Unsortiert: " + values);
 		System.out.println("Sortiert: " + BTree.bsort(values));
 		

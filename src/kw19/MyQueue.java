@@ -8,6 +8,7 @@
  */
 package kw19;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -76,8 +77,12 @@ public class MyQueue<T> {
 			sb.append(t);
 		}
 		sb.append("]");
+		
+		List<T> copy = new LinkedList<>(queue);
+		Collections.reverse(copy);
+		return copy.toString();
 
-		return sb.toString();
+//		return sb.toString();
 
 	}
 

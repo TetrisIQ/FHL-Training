@@ -38,8 +38,8 @@ public class BTree<T extends Comparable<T>> {
 	public static <T extends Comparable<T>> List<T> bsort(List<T> ls) {
 		Node<T> tree = buildTree(ls);
 
-		List<T> ret = new LinkedList<>();
-		ret = buildInOrderList(tree);
+		List<T> ret = buildInOrderList(tree);
+//		ret = 
 
 		return ret;
 
@@ -109,6 +109,18 @@ public class BTree<T extends Comparable<T>> {
 		ret.add(node.value);
 		ret.addAll(buildInOrderList(node.right));
 		return ret;
+
+	}
+
+	/**
+	 * Sortiert eine Liste indem ein sortierter Binär Baum aufgebaut wird
+	 * 
+	 * @param ls
+	 *            Eine Liste mit zu sortierenden elementen
+	 * @return Eine Liste mit den Sortierten Elementen
+	 */
+	public static <T extends Comparable<T>> List<T> sort(List<T> ls) {
+		return bsort(ls);
 
 	}
 

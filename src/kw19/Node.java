@@ -39,7 +39,7 @@ public class Node<T extends Comparable<T>> {
 	 * Gibt den Wert des obersten Wurzelknoten aus
 	 */
 	public String toString() {
-		return value + " ";
+		return value + "";
 	}
 
 }

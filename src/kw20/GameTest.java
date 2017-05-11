@@ -26,7 +26,7 @@ public class GameTest {
 	 */
 	public static void main(String[] args) {
 		GameModel.createList();
-//		GameModel.swap(0, 1);
+		GameModel.swap(0, 1);
 //		System.out.println(GameModel.getList());
 //		System.out.println(GameModel.isFinish());
 //
@@ -35,20 +35,21 @@ public class GameTest {
 //		
 //		System.out.println(GameModel.getList());
 //		System.out.println(GameModel.isFinish());
-//		GameView r = new GameView();
+		GameView r = new GameView();
 		
 		
 //		Timer t = new Timer(20, e -> {
 //			time += 0.001; 
-////			timer.setText(time + "");
-//
+//			timer.setText(time + "");
+
 //		});
-//		
-		GameModel.timer.start();
-		while (GameModel.time < 1) {
-			System.out.println(Math.round(GameModel.time*1000)/1000.0);
-		}
-		GameModel.timer.stop();
+		
+//		GameModel.timer.start();
+//		while (GameModel.time < 1) {
+//			System.out.println(Math.round(GameModel.time*1000)/1000.0);
+//		}
+		
+//		GameModel.timer.stop();
 	}
 	
 }

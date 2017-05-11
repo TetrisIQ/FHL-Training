@@ -18,10 +18,10 @@ public class GameModel {
 
 	private static List<Integer> list = new LinkedList<>();
 	private static int register = 20;
-	public static final int SIZE = 4;
+	public static final int SIZE = 3;
 	public static double time = 0.000;
 	public static Timer timer = new Timer(20, e -> {
-		time += 0.001;
+		time += 0.020;
 	});
 
 	public static void createList() {
@@ -74,6 +74,19 @@ public class GameModel {
 				return false;
 		}
 		return ready;
+	}
+
+	public boolean play() {
+		return timer.isRunning();
+	}
+
+	public void reset() {
+		time = 0.0;
+		timer.stop();
+		register = 20;
+		createList();
+		
+		
 	}
 
 }

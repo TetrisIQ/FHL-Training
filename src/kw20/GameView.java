@@ -19,6 +19,25 @@ public class GameView {
 	protected GameControler control = new GameControler(this, model);
 	List<Button> myButtons = makeButtons();
 
+	private Button play = new Button();
+	{
+		if (!(model.play())) {
+			this.play.setLabel("Play");
+			this.play.setName("Play");
+		} else {
+			this.play.setLabel(" ");
+		}
+		this.play.addActionListener(e -> control.startGame());
+
+	}
+
+	private JTextField timer = new JTextField();
+	{
+		this.timer.setEditable(false);
+		this.timer.setSize(200, 60);
+		updateTimer();
+	}
+
 	public GameView() {
 		Panel t = new Panel();
 		GridLayout gbLayout = new GridLayout(model.SIZE, model.SIZE);
@@ -35,9 +54,9 @@ public class GameView {
 
 			b.addActionListener(e -> control.setField(i));
 		}
-//		f.add(play, BorderLayout.NORTH);
+		f.add(play, BorderLayout.NORTH);
 		f.add(t, BorderLayout.CENTER);
-//		f.add(timer, BorderLayout.PAGE_END);
+		 f.add(timer, BorderLayout.PAGE_END);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(model.SIZE * 120, model.SIZE * 120);
 		f.setVisible(true);
@@ -47,19 +66,22 @@ public class GameView {
 		List<Button> b = new LinkedList<>();
 		for (int i = 0; i < model.SIZE * model.SIZE; i++) {
 			b.add(new Button(model.getList().get(i).toString()));
-			b.get(i).setName(i +""); // index 
+			b.get(i).setName(i + ""); // index
 		}
 		return b;
 
 	}
-	
+
 	public void update() {
-		for (int i =0; i < myButtons.size(); i++) {
+		for (int i = 0; i < myButtons.size(); i++) {
 			myButtons.get(i).setLabel(model.getList().get(i).toString());
 		}
-		
-	}
-	
 
+	}
+
+	public void updateTimer() {
+		double newTime = (model.time*1000) /1000;
+		timer.setText(newTime + "");
+	}
 
 }
