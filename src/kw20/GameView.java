@@ -22,27 +22,20 @@ public class GameView {
 
 	private Button play = new Button();
 	{
-//		if (!(model.play())) {
-//			this.play.setLabel("Play");
-//			this.play.setName("Play");
-//		} else {
-//			this.play.setLabel(" ");
-//		}
-//		this.play.addActionListener(e -> control.gameControl());
 		updatePlay();
 
 	}
 
-	private Button timer = new Button();
+	private JTextField timer = new JTextField();
 	{
-//		this.timer.setEditable(false);
+		this.timer.setEditable(false);
 		this.timer.setSize(200, 60);
 		updateTimer();
 	}
 
 	public GameView() {
 		Panel t = new Panel();
-		GridLayout gbLayout = new GridLayout(model.SIZE, model.SIZE);
+		GridLayout gbLayout = new GridLayout(model.SIZEX, model.SIZEY);
 		gbLayout.setHgap(5);
 		gbLayout.setVgap(5);
 		t.setLayout(gbLayout);
@@ -60,24 +53,27 @@ public class GameView {
 		play.setBackground(Color.ORANGE);
 		timer.setFont(new Font("", 0, 20));
 		timer.setBackground(Color.GRAY);
-//		timer.setT
-		
+		// timer.setT
+
 		f.add(play, BorderLayout.NORTH);
 		f.add(t, BorderLayout.CENTER);
 		f.add(timer, BorderLayout.PAGE_END);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(model.SIZE * 120, model.SIZE * 120);
+		f.setSize(model.SIZEX * 120, model.SIZEY * 120);
 		f.setVisible(true);
 	}
 
 	private List<Button> makeButtons() {
 		List<Button> b = new LinkedList<>();
-		for (int i = 0; i < model.SIZE * model.SIZE; i++) {
+		for (int i = 0; i < model.SIZEX * model.SIZEY; i++) {
 			b.add(new Button(model.getList().get(i).toString()));
 			b.get(i).setName(i + ""); // index
 			b.get(i).setFont(new Font("Dialog", 1, 15)); // größe setzen
-
+			// b.setBackground(Color.white);
 		}
+
+		b.forEach(e -> e.setBackground(Color.WHITE));
+		
 		return b;
 
 	}
@@ -89,21 +85,30 @@ public class GameView {
 
 	}
 
+	public void updateButtons(int marker) {
+		for (int i = 0; i < myButtons.size(); i++) {
+			myButtons.get(i).setLabel(model.getList().get(i).toString());
+			myButtons.get(i).setBackground(Color.ORANGE);
+		}
+
+	}
+
 	public void updateTimer() {
-		DecimalFormat lab = new DecimalFormat(model.time+"");
-		timer.setLabel(model.time + " ("+ model.percentReady()+")");
-		if (model.percentReady() < 100) timer.setForeground(Color.RED);
-		else timer.setForeground(Color.GREEN);
-		
-//		String newTime = model.time + "";
-//		int x = 0;
-//		if (newTime.length() <= 5) x = 4;
-//		else x = 0;
-//		timer.setLabel(newTime.substring(0, x));
+		timer.setText("(" + model.percentReady() + "%)  " + model.getTime() + "sec.");
+		if (model.percentReady() < 100)
+			timer.setForeground(Color.RED);
+		else
+			timer.setForeground(Color.GREEN);
+
+		// String newTime = model.time + "";
+		// int x = 0;
+		// if (newTime.length() <= 5) x = 4;
+		// else x = 0;
+		// timer.setLabel(newTime.substring(0, x));
 	}
 
 	public void updatePlay() {
-		
+
 		if (!(model.play())) {
 			this.play.setLabel("Play");
 			this.play.setBackground(Color.GREEN);
@@ -115,11 +120,29 @@ public class GameView {
 		this.play.addActionListener(e -> control.gameControl());
 
 	}
-	
+
 	public void updateAll() {
 		updateButtons();
 		updatePlay();
 		updateTimer();
 	}
 
+	public void markerButton(int f) {
+		String s = f + "";
+		for (Button b : myButtons) {
+			if (b.getName().equals(s) && !b.getBackground().equals(Color.gray)) {
+				b.setBackground(Color.gray);
+			} else
+				b.setBackground(Color.white);
+		}
+
+	}
+
+	public void markerButton_(int f) {
+		String s = f + "";
+		for (Button b : myButtons) {
+				b.setBackground(Color.white);
+			}
+
+	}
 }

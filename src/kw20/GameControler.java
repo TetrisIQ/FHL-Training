@@ -11,41 +11,47 @@ package kw20;
 import javax.swing.Timer;
 
 public class GameControler {
-	
+
 	boolean oneTime = false;
+	int firstSwap = 0;
 	private GameView view;
 	private GameModel model;
-	private Timer timeRun = new Timer(20, e-> {
+	private Timer timeRun = new Timer((int) 0.001, e -> {
 		view.updateTimer();
-//		view.updatePlay();
+		// view.updatePlay();
 	});
-	
-	
 
 	public GameControler(GameView gameView, GameModel gameModel) {
-	      this.view = gameView;
-	      this.model = gameModel;
+		this.view = gameView;
+		this.model = gameModel;
 	}
-	
+
 	public void setField(int f) {
 		model.swap(f);
+		if (firstSwap % 2 == 0) {
+			view.markerButton(f);
+		} else {
+			view.markerButton_(f);
+			
+		}
+		firstSwap++;
 		view.updateButtons();
 		if (model.isFinish()) {
 			resetGame();
 		}
 	}
-	
+
 	public void gameControl() {
-//		if (oneTime) {
-//			resetGame();
-//			oneTime = false;
-//		}
-//		else {
-//			startGame();
-//			oneTime = true;
-//		}
+		// if (oneTime) {
+		// resetGame();
+		// oneTime = false;
+		// }
+		// else {
+		// startGame();
+		// oneTime = true;
+		// }
 		startGame();
-		
+
 	}
 
 	public void startGame() {
@@ -56,23 +62,16 @@ public class GameControler {
 		model.timerStart();
 		timeRun.start();
 		view.updatePlay();
-		
+
 	}
-	
-	
 
 	private void resetGame() {
 		model.setPlay(false);
 		model.makeFinish();
 		timeRun.stop();
-//		model.reset();
+		// model.reset();
 		view.updatePlay();
 		view.updateTimer();
 	}
-	
-	
-	
-	
-	
-	
+
 }

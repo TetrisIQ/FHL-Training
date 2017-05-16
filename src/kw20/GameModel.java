@@ -13,12 +13,14 @@ import java.util.List;
 
 import javax.swing.Timer;
 
+
 public class GameModel {
 
 	private boolean play = false;
 	private static List<Integer> list = new LinkedList<>();
 	private static int register = 20;
-	public static final int SIZE = 2; // sollte größer gleich 2 sein: Default 4
+	public static final int SIZEX = 4; 	// sollte größer gleich 2 sein: Default 4
+	public static final int SIZEY = 4;	// sollte größer gleich 2 sein: Default 4
 	public static double time = 0.000;
 	private static Timer timer = new Timer(20, e -> {
 		time += 0.020;
@@ -37,7 +39,7 @@ public class GameModel {
 	}
 
 	private static void fillList() {
-		for (int i = 0; i < SIZE * SIZE; i++) {
+		for (int i = 0; i < SIZEX * SIZEY; i++) {
 			list.add(i);
 		}
 
@@ -78,7 +80,6 @@ public class GameModel {
 	
 	public void makeFinish() {
 		list.sort((i1,i2) -> i1.compareTo(i2));
-		
 	}
 
 	public boolean play() {
@@ -111,6 +112,13 @@ public class GameModel {
 			if (list.get(i) == i) right++;
 		}
 		return (double) 100 / list.size() * right;
+	}
+	
+	public double getTime() {
+//		return new DecimalFormat("0.000").format(time + " sec.");
+//		return  new BigDecimal(time).toString();
+//		return Math.round( time * 100 ) / 100 + " sec.";
+		return (Math.round(100.0 * time) / 100.0);
 	}
 
 }
