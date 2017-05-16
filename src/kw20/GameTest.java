@@ -26,7 +26,7 @@ public class GameTest {
 	 */
 	public static void main(String[] args) {
 		GameModel.createList();
-		GameModel.swap(0, 1);
+//		GameModel.swap(0, 1);
 //		System.out.println(GameModel.getList());
 //		System.out.println(GameModel.isFinish());
 //

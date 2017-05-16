@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
 
 public class GameView {
 	protected GameModel model = new GameModel();
@@ -21,19 +22,20 @@ public class GameView {
 
 	private Button play = new Button();
 	{
-		if (!(model.play())) {
-			this.play.setLabel("Play");
-			this.play.setName("Play");
-		} else {
-			this.play.setLabel(" ");
-		}
-		this.play.addActionListener(e -> control.startGame());
+//		if (!(model.play())) {
+//			this.play.setLabel("Play");
+//			this.play.setName("Play");
+//		} else {
+//			this.play.setLabel(" ");
+//		}
+//		this.play.addActionListener(e -> control.gameControl());
+		updatePlay();
 
 	}
 
-	private JTextField timer = new JTextField();
+	private Button timer = new Button();
 	{
-		this.timer.setEditable(false);
+//		this.timer.setEditable(false);
 		this.timer.setSize(200, 60);
 		updateTimer();
 	}
@@ -54,9 +56,15 @@ public class GameView {
 
 			b.addActionListener(e -> control.setField(i));
 		}
+		play.setFont(new Font("", 0, 20));
+		play.setBackground(Color.ORANGE);
+		timer.setFont(new Font("", 0, 20));
+		timer.setBackground(Color.GRAY);
+//		timer.setT
+		
 		f.add(play, BorderLayout.NORTH);
 		f.add(t, BorderLayout.CENTER);
-		 f.add(timer, BorderLayout.PAGE_END);
+		f.add(timer, BorderLayout.PAGE_END);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(model.SIZE * 120, model.SIZE * 120);
 		f.setVisible(true);
@@ -67,12 +75,14 @@ public class GameView {
 		for (int i = 0; i < model.SIZE * model.SIZE; i++) {
 			b.add(new Button(model.getList().get(i).toString()));
 			b.get(i).setName(i + ""); // index
+			b.get(i).setFont(new Font("Dialog", 1, 15)); // größe setzen
+
 		}
 		return b;
 
 	}
 
-	public void update() {
+	public void updateButtons() {
 		for (int i = 0; i < myButtons.size(); i++) {
 			myButtons.get(i).setLabel(model.getList().get(i).toString());
 		}
@@ -80,8 +90,36 @@ public class GameView {
 	}
 
 	public void updateTimer() {
-		double newTime = (model.time*1000) /1000;
-		timer.setText(newTime + "");
+		DecimalFormat lab = new DecimalFormat(model.time+"");
+		timer.setLabel(model.time + " ("+ model.percentReady()+")");
+		if (model.percentReady() < 100) timer.setForeground(Color.RED);
+		else timer.setForeground(Color.GREEN);
+		
+//		String newTime = model.time + "";
+//		int x = 0;
+//		if (newTime.length() <= 5) x = 4;
+//		else x = 0;
+//		timer.setLabel(newTime.substring(0, x));
+	}
+
+	public void updatePlay() {
+		
+		if (!(model.play())) {
+			this.play.setLabel("Play");
+			this.play.setBackground(Color.GREEN);
+		} else {
+			this.play.setLabel("Game is Runing");
+			this.play.setBackground(Color.ORANGE);
+
+		}
+		this.play.addActionListener(e -> control.gameControl());
+
+	}
+	
+	public void updateAll() {
+		updateButtons();
+		updatePlay();
+		updateTimer();
 	}
 
 }
